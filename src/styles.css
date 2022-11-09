@@ -1,1 +1,162 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+html {
+  box-sizing: border-box;
+  font-size: 100%;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: "Lato", sans-serif !important;
+  color: #212529;
+  margin: 0;
+  padding: 0;
+}
+
+.hero {
+  height: 50vh;
+  background-image: url("assets/img/pexels-steve-johnson-1330722.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  color: #fff;
+}
+
+a {
+  color: #212529;
+  text-decoration: none;
+}
+
+a .nav-link{
+  color: #fff !important;
+}
+
+/* bootstrap */
+.subtitulo {
+  font-size: 1.7rem;
+  font-weight: 400;
+}
+
+section:not(:first-of-type) {
+  margin-top: 2em !important;
+}
+
+ul {
+  padding: 0 ;
+}
+
+.proyecto > li {
+  border-right: none;
+  border-left: none;
+  border-top: none;
+  border-bottom: 1px solid #7777;
+  padding: 0.5rem 1rem;
+}
+
+li {
+  list-style: none;
+}
+
+.estudios-list > li {
+  display: inline;
+}
+
+
+.navbar-toggler-icon {
+  border-color: #fff ;
+}
+
+/* Tarjetas */
+.card {
+  border: none;
+}
+
+.card-proyecto {
+  height: auto !important;
+}
+
+.card-img-container {
+  height: 200px;
+}
+
+.card-img-top {
+  height: 100% !important;
+  width: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+/* Barra de Desplazamiento */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(226, 223, 223);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b8b3b3;
+}
+
+hr {
+  width: 100% !important;
+  margin: 0;
+  padding-left: 10px;
+  border-color: #212529;
+}
+
+.imagen-estudio {
+  width: 300px;
+}
+
+.imagen-estudio > img {
+  height: 4em;
+  margin-bottom: 0.2em;
+  width: auto;
+  -o-object-fit: contain;
+  object-fit: contain;
+}
+
+small {
+  display: block;
+}
+/* label */
+.cargar-archivo {
+  color: #fff ;
+  border: 1px solid #fff ;
+}
+.cargar-archivo:hover, .cargar-archivo:active:hover {
+  color:#212529 ;
+  border: 1px solid #212529 ;
+  background-color: #fff ;
+}
+
+/* Pildoras */
+.badge {
+  margin-left: 5px ;
+}
+
+.html-pill {
+  background-color: #f06529;
+}
+
+.angular-pill {
+  background-color: #dd1b16;
+}
+
+.sql-pill {
+  background-color: #00758F;
+}

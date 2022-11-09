@@ -1,0 +1,55 @@
+<section class="row my-5">
+  <h2 class="text-center fs-2">Estudios</h2>
+  <p class="col-lg-8 offset-lg-2 text-center lead w-lg-50">Esta es la instrucción pertinente de la que dispongo para recorrer el camino de la programación y el diseño web.</p>
+  <div class="container px-4 " id="featured-3">
+    <div>
+
+      <ul class="row g-4 row-cols-1 row-cols-md-2 row-cols-xxl-3">
+        <li *ngFor="let educacion of educacionList" class="col">
+          <div class="imagen-estudio">
+            <img [src]="educacion.image" alt="" class="">
+          </div>
+
+          <h3 class="fs-3">{{educacion.career}}</h3>
+          <small class="periodo-estudio lead">{{educacion.school}}</small>
+          <small ngPreserveWhitespaces class="periodo-estudio"><time>{{educacion.start}}</time> - <time>{{educacion.end}}</time></small>
+          <p>{{educacion.description}}</p>
+        </li>
+      </ul>
+
+      <!-- <div class="col">
+        <div class="imagen-estudio">
+          <img src="assets/img/Estudios/Logo_de_la_Universidad_de_Buenos_Aires.jpg" alt="" class="">
+        </div>
+
+        <h3 class="fs-3">Diseño gráfico</h3>
+        <small class="periodo-estudio lead">FADU</small>
+        <small ngPreserveWhitespaces class="periodo-estudio"><time>2003</time> - <time></time></small>
+        <p>Carrera de grado que consiste en proyectar comunicaciones visuales destinadas a transmitir mensajes específicos a grupos sociales con objetivos determinados. El rol que cumple el diseñador gráfico en el proceso de comunicación es el de codificador o intérprete del mensaje. Trabaja en la interpretación, ordenamiento y presentación de los mensajes visuales.</p>
+      </div>
+
+      <div class="col">
+        <div class="imagen-estudio">
+          <img src="assets/img/Estudios/Logo-frecodecamp.png" alt="" class="">
+        </div>
+        <h3 class="fs-3">JavaScript Algorithms and Data Structures</h3>
+        <small class="periodo-estudio lead">FreeCodeCamp</small>
+        <small class="periodo-estudio">2019</small>
+        <p>Curso en donde se enseñan fundamentos de Javascript: variables, arrays, objetos, loops y funciones.
+        También se estudia la manipulación de strings, expresiones regulares, asi como los paradigmas de programación OOP y FP.
+        </p>
+      </div>
+
+      <div class="col">
+        <div class="imagen-estudio">
+          <img src="assets/img/Estudios/Capacitarte-logo-blanco-en-fondo-blanco-mediano-700x399(2).png" alt="" class="">
+        </div>
+
+        <h3 class="fs-3">Curso de Python</h3>
+        <small class="periodo-estudio lead">Capacitarte</small>
+        <small class="periodo-estudio">2020</small>
+        <p>Curso en el que se tratan las caracteristicas y virtudes de este lenguaje multiplataforma y su sintaxis. Se vieron los tipos de datos propios de Python, el funcionamiento de loops y condicionales, recursividad, modulos, etc.</p>
+      </div>  -->
+    </div>
+  </div>
+</section>

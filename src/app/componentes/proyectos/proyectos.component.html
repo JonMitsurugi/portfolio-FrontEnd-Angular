@@ -1,0 +1,20 @@
+<section class="row my-5" id="1">
+  <div class="col-md-8 offset-md-2">
+    <h2 class="text-center fs-2">Proyectos</h2>
+    <p class="text-center lead w-lg-50">Aqui encontraras cada uno de los trabajos que tengo finalizados o en desarrollo. ¡Date una vuelta y miralos!</p>
+  </div>
+
+  <ul class="proyecto row row-cols-1 row-cols-lg-2 mx-auto ">
+    <hr>
+    <li *ngFor="let proyecto of proyectoList" class="col list-group-item d-flex flex-column justify-content-between">
+      <div class="d-flex justify-content-between ms-2">
+        <div class="fw-bold mb-1" ><a href="">{{proyecto.name}}</a></div>
+        <ul>
+          <li *ngFor="let software of proyecto.software" class="badge rounded-pill bg-primary">{{software}}</li>
+        </ul>
+      </div>
+      <small class="small ms-2 mb-1">{{proyecto.type}}</small>
+      <div class="ms-2 mb-1">{{proyecto.description}}</div>
+    </li>
+  </ul>
+</section>

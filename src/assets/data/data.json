@@ -1,0 +1,66 @@
+{
+  "name": "Jonatan",
+  "surname": "Amado",
+  "position": "Full Stack Developer",
+  "location": "Buenos Aires - Argentina",
+  "education": [
+    {
+      "school": "FADU",
+      "career": "Diseño gráfico",
+      "start": "2003",
+      "end": "",
+      "image": "assets/img/Estudios/Logo_de_la_Universidad_de_Buenos_Aires.jpg",
+      "description": "Carrera de grado que consiste en proyectar comunicaciones visuales destinadas a transmitir mensajes específicos a grupos sociales con objetivos determinados. El rol que cumple el diseñador gráfico en el proceso de comunicación es el de codificador o intérprete del mensaje. Trabaja en la interpretación, ordenamiento y presentación de los mensajes visuales."
+    },
+    {
+      "school": "FreeCodeCamp",
+      "career": "JavaScript Algorithms and Data Structures",
+      "start": "2019",
+      "end": "2019",
+      "image": "assets/img/Estudios/Logo-frecodecamp.png",
+      "description": "Curso en donde se enseñan fundamentos de Javascript: variables, arrays, objetos, loops y funciones. También se estudia la manipulación de strings, expresiones regulares, asi como los paradigmas de programación OOP y FP."
+    },
+    {
+      "school": "Capacitarte",
+      "career": "Curso de Python",
+      "start": "2020",
+      "end": "2020",
+      "image": "assets/img/Estudios/Capacitarte-logo-blanco-en-fondo-blanco-mediano-700x399(2).png",
+      "description": "Curso en el que se tratan las caracteristicas y virtudes de este lenguaje multiplataforma y su sintaxis. Se vieron los tipos de datos propios de Python, el funcionamiento de loops y condicionales, recursividad, modulos, etc."
+    }
+  ],
+  "skills": [
+    {
+      "name": "Adaptabilidad",
+      "image": "assets/img/2ca4586c93c62e0b6bc600b1e1d4522e.jpg"
+    },
+    {
+      "name": "Comunicación",
+      "image": "assets/img/6258116514_331b56543e_o.jpg"
+    },
+    {
+      "name": "Creatividad",
+      "image": "assets/img/PAPERLUX_NOVUM11-2.jpg"
+    },
+    {
+      "name": "Resolución de Problemas",
+      "image": "assets/img/PAPERLUX_NOVUM11-2.jpg"
+    },
+    {
+      "name": "Organización",
+      "image": "assets/img/MWM_DD_2.jpeg"
+    }
+  ],
+  "projects": [
+    {
+      "name": "Porfolio Web",
+      "type": "SPA (Single Page Application)",
+      "description": "Proyecto desarrollado a partir del plan Argentina Programa, en el cual se aplican todos los conocimientos necesarios para convertirse en un Full Stack Developer.",
+      "software": [
+        "HTML",
+        "Angular",
+        "Sql"
+      ]
+    }
+  ]
+}
