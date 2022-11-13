@@ -17,4 +17,5 @@ export class HabilidadesComponent implements OnInit {
       this.habilidadList = data.skills);
   }
 
+
 }

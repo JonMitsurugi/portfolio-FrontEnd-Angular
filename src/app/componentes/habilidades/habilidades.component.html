@@ -1,60 +1,23 @@
 <section class="row my-5">
-  <h2 class="text-center fs-2">Habilidades</h2>
+  <h2 id="habilidades" class="text-center fs-2">Habilidades</h2>
   <p class="col-lg-8 offset-lg-2 text-center lead w-lg-50">Cuento con algunas caracteristicas que me permiten desempeñarme bien dentro de cualquier entorno de trabajo y poder desarrollar actividades en grupo de forma satisfactoria.</p>
 
   <ul class="row row-cols-2 row-cols-sm-3 row-cols-lg-4 g-4 pe-0 mt-0">
-    <li *ngFor="let habilidad of habilidadList" class="col">
+    <li *ngFor="let habilidad of habilidadList" class="">
       <div class="card">
-          <img [src]="habilidad.image" class="card-img-top" alt="...">
+          <img [src]="habilidad.image" class="card-img-top" alt="..." >
         <div class="">
           <h5 class="mt-2 card-title fw-bold">{{habilidad.name}}</h5>
         </div>
       </div>
     </li>
 
-    <!-- <div class="col">
-      <div class="card">
-          <img src="assets/img/2ca4586c93c62e0b6bc600b1e1d4522e.jpg" class="card-img-top" alt="...">
+    <li class="agregar-proyecto d-flex justify-content-center align-items-center mt-0 ">
+      <div class="">
         <div class="">
-          <h5 class="mt-2 card-title fw-bold">Adaptabilidad</h5>
+          <i class="fa-regular fa-plus"></i>
         </div>
       </div>
-    </div>
-
-    <div class="col">
-      <div class="card">
-          <img src="assets/img/6258116514_331b56543e_o.jpg" class="card-img-top" alt="...">
-        <div class="">
-          <h5 class="mt-2 card-title fw-bold">Comunicación</h5>
-        </div>
-      </div>
-    </div>
-
-    <div class="col">
-      <div class="card">
-          <img src="assets/img/PAPERLUX_NOVUM11-2.jpg" class="card-img-top" alt="...">
-        <div class="">
-          <h5 class="mt-2 card-title fw-bold">Creatividad</h5>
-        </div>
-      </div>
-    </div>
-
-    <div class="col">
-      <div class="card">
-        <img src="assets/img/PAPERLUX_NOVUM11-2.jpg" class="card-img-top" alt="...">
-        <div class="">
-          <h5 class="mt-2 card-title fw-bold">Resolución de Problemas</h5>
-        </div>
-      </div>
-    </div>
-
-    <div class="col">
-      <div class="card">
-        <img src="assets/img/MWM_DD_2.jpeg" class="card-img-top" alt="...">
-        <div class="">
-          <h5 class="mt-2 card-title fw-bold">Organización</h5>
-        </div>
-      </div>
-    </div> -->
+    </li>
   </ul>
 </section>

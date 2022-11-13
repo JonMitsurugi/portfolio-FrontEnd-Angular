@@ -3,6 +3,7 @@
   "surname": "Amado",
   "position": "Full Stack Developer",
   "location": "Buenos Aires - Argentina",
+  "heroimage": "assets/img/pexels-steve-johnson-1330722.jpg",
   "education": [
     {
       "school": "FADU",
@@ -52,6 +53,26 @@
     }
   ],
   "projects": [
+    {
+      "name": "Porfolio Web",
+      "type": "SPA (Single Page Application)",
+      "description": "Proyecto desarrollado a partir del plan Argentina Programa, en el cual se aplican todos los conocimientos necesarios para convertirse en un Full Stack Developer.Proyecto desarrollado a partir del plan Argentina Programa, en el cual se aplican todos los conocimientos necesarios para convertirse en un Full Stack Developer. Proyecto desarrollado a partir del plan Argentina Programa, en el cual se aplican todos los conocimientos necesarios para convertirse en un Full Stack Developer.",
+      "software": [
+        "HTML",
+        "Angular",
+        "Sql"
+      ]
+    },
+    {
+      "name": "Porfolio Web",
+      "type": "SPA (Single Page Application)",
+      "description": "Proyecto desarrollado a partir del plan Argentina Programa, en el cual se aplican todos los conocimientos necesarios para convertirse en un Full Stack Developer.",
+      "software": [
+        "HTML",
+        "Angular",
+        "Sql"
+      ]
+    },
     {
       "name": "Porfolio Web",
       "type": "SPA (Single Page Application)",

@@ -1,10 +1,9 @@
 <section class="row my-5">
-  <h2 class="text-center fs-2">Estudios</h2>
+  <h2 id="estudios" class="text-center fs-2">Estudios</h2>
   <p class="col-lg-8 offset-lg-2 text-center lead w-lg-50">Esta es la instrucción pertinente de la que dispongo para recorrer el camino de la programación y el diseño web.</p>
   <div class="container px-4 " id="featured-3">
     <div>
-
-      <ul class="row g-4 row-cols-1 row-cols-md-2 row-cols-xxl-3">
+      <ul class="row g-4 row-cols-1 row-cols-md-2 row-cols-xxl-3 estudios">
         <li *ngFor="let educacion of educacionList" class="col">
           <div class="imagen-estudio">
             <img [src]="educacion.image" alt="" class="">
@@ -15,6 +14,14 @@
           <small ngPreserveWhitespaces class="periodo-estudio"><time>{{educacion.start}}</time> - <time>{{educacion.end}}</time></small>
           <p>{{educacion.description}}</p>
         </li>
+
+        <li class="col agregar-proyecto d-flex justify-content-center align-items-center mt-1">
+              <div class="">
+                <i class="fa-regular fa-plus"></i>
+              </div>
+        </li>
+
+
       </ul>
 
       <!-- <div class="col">

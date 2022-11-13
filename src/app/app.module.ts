@@ -11,6 +11,8 @@ import { HabilidadesComponent } from './componentes/habilidades/habilidades.comp
 import { ProyectosComponent } from './componentes/proyectos/proyectos.component';
 import { FooterComponent } from './componentes/footer/footer.component';
 import { HttpClientModule } from "@angular/common/http";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -22,11 +24,15 @@ import { HttpClientModule } from "@angular/common/http";
     HabilidadesComponent,
     ProyectosComponent,
     FooterComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    DragDropModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
