@@ -13,6 +13,9 @@ import { FooterComponent } from './componentes/footer/footer.component';
 import { HttpClientModule } from "@angular/common/http";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { IniciarSesionComponent } from './componentes/iniciar-sesion/iniciar-sesion.component';
+import { PortfolioComponent } from './componentes/portfolio/portfolio.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,9 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     EstudiosComponent,
     HabilidadesComponent,
     ProyectosComponent,
-    FooterComponent
+    FooterComponent,
+    IniciarSesionComponent,
+    PortfolioComponent
 
   ],
   imports: [
@@ -32,7 +37,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     HttpClientModule,
     BrowserAnimationsModule,
     DragDropModule,
-
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
