@@ -1,0 +1,26 @@
+<section class="row my-5" id="">
+  <div class="col-md-8 offset-md-2">
+    <h2 id="experiencia" class="text-center fs-2">Experiencia</h2>
+    <p class="text-center lead w-lg-50">Estos son los trabajos que me ayudaron a desarrollar mis aptitutes y habilidades.</p>
+  </div>
+
+  <ul class="proyecto row row-cols-1 row-cols-lg-2 mx-auto ">
+    <hr>
+    <li *ngFor="let experiencia of experienciaList" class="experiencia col list-group-item d-flex flex-column justify-content-start">
+      <div class="d-flex justify-content-between ms-2">
+        <div class="fw-bold mb-1" >
+          <a href="">{{experiencia.name}}</a>
+        </div>
+      </div>
+      <small ngPreserveWhitespaces class="periodo-estudio ms-2"><time>{{experiencia.start}}</time> - <time>{{experiencia.end}}</time></small>
+      <small class="small ms-2 mb-1">{{experiencia.role}}</small>
+      <div class="ms-2 mb-1">{{experiencia.description}}</div>
+    </li>
+
+    <li class="col list-group-item d-flex flex-column justify-content-center align-items-center agregar-proyecto">
+      <div class="d-flex justify-content-between" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Tooltip on bottom">
+        <i class="fa-regular fa-plus"></i>
+      </div>
+    </li>
+  </ul>
+</section>

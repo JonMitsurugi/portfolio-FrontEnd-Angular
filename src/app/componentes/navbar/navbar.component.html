@@ -8,19 +8,28 @@
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="#acercade">Acerca de mi</a>
+            <a class="nav-link" routerLink="." fragment="acercade">Acerca de mi</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#estudios">Estudios</a>
+            <a class="nav-link" routerLink="." fragment="estudios">Estudios</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#habilidades">Habilidades</a>
+            <a class="nav-link" routerLink="." fragment="habilidades">Habilidades</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#proyectos">Proyectos</a>
+            <a class="nav-link" routerLink="." fragment="experiencia">Experiencia</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="." fragment="proyectos">Proyectos</a>
           </li>
         </ul>
-        <button class="btn btn-outline-light" type="">Login</button>
+        <ul class="align-baseline mb-md-0 mt-2">
+
+          <i class="fa-brands fa-linkedin-in fa-lg me-3 pt-1"></i>
+          <i class="fa-brands fa-github fa-lg me-3"></i>
+        </ul>
+        <a href="" routerLink="/iniciar-sesion" *ngIf="!isLogged"><button class="btn btn-outline-light" type="">Login</button></a>
+        <a href="" *ngIf="isLogged"><button class="btn btn-outline-light" type="" (click)="onLogOut()">Cerrar Sesión</button></a>
       </div>
     </div>
   </nav>

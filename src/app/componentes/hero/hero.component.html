@@ -1,7 +1,11 @@
-<section class="hero" [style.background-image] = "'url(' + miPorfolio.heroimage + ')'">
-  <div>
-    <h1 ngPreserveWhitespaces class="fw-bold text-center fs-1"><span id="nombre">{{miPorfolio.name}}</span> <span id="apellido">{{miPorfolio.surname}}</span></h1>
-    <p class=" fw-bold text-center lead w-lg-50 text-white fs-3" id="">{{miPorfolio.position}}</p>
-    <p class=" text-center lead w-lg-50 text-white fs-5" id="">{{miPorfolio.location}}</p>
+
+<section class="hero" [style.background-image] = "'url(' + persona.img + ')'">
+  <div class="row d-flex justify-content-center ">
+    <div class=" foto-cara mb-3"></div>
+    <h1 ngPreserveWhitespaces class="fw-bold text-center fs-1"><span id="nombre">{{persona.nombre}}</span> <span id="apellido">{{persona.apellido}}</span></h1>
+    <!-- <p class=" fw-bold text-center lead w-lg-50 text-white fs-3" id="">{{miPorfolio.position}}</p> -->
+    <p class=" fw-bold text-center lead w-lg-50 text-white fs-3" id=""></p>
+    <!-- <p class=" text-center lead w-lg-50 text-white fs-5" id="">{{miPorfolio.location}}</p> -->
+    <p class=" text-center lead w-lg-50 text-white fs-5" id=""></p>
   </div>
 </section>

@@ -4,6 +4,7 @@
 html {
   box-sizing: border-box;
   font-size: 100%;
+  scroll-behavior: smooth !important;
 }
 
 *,
@@ -17,6 +18,8 @@ body {
   color: #212529;
   margin: 0;
   padding: 0;
+  /* background-color: #f6f8fa; */
+  background-color: #fff;
 }
 
 .hero {
@@ -39,6 +42,7 @@ a {
 
 a .nav-link{
   color: #fff !important;
+  z-index: 101;
 }
 
 /* bootstrap */
@@ -65,6 +69,7 @@ ul {
 
 li {
   list-style: none;
+  pointer-events: auto;
 }
 
 .estudios-list > li {
@@ -251,4 +256,33 @@ z-index: 200;
   background-position: center;
   padding-top: 100px;
   background-size: cover;
+}
+
+.is-invalid {
+  background-image: none !important;
+}
+
+#InputPassword::content {
+  background-color:#fff;
+}
+
+.experiencia:hover {
+  box-shadow: -10px 0 0 0 #451869 !important;
+  background-color: #fff;
+}
+
+.foto-cara {
+  height: 10em;
+  width: 10em;
+  border-radius: 50%;
+  background-color: #451869;
+  display: inline-block;
+  /* margin-bottom: 1em; */
+}
+
+
+.fa-brands {
+  color: #fff;
+  font-size: 30px;
+  padding-top: 10px;;
 }

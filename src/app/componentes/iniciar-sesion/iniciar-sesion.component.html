@@ -1,11 +1,51 @@
 <div class="background-sesion">
 
-  <form [formGroup]="form" class="mx-auto sesion-form border p-4 ">
+  <form #f="ngForm" class="mx-auto sesion-form border p-4" (ngSubmit)="onLogin()" novalidate>
     <fieldset>
       <legend class="sesion-titulo mb-4 fw-bold">Iniciar Sesión</legend>
       <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label fw-bold">Correo Electrónico</label>
-        <input type="email" formControlName="email" class="form-control" id="inputEmail" aria-describedby="emailHelp">
+        <label for="nombreUsuario" class="form-label fw-bold">Correo Electrónico</label>
+        <input type="email" class="form-control" id="nombreUsuario" name="nombreUsuario" aria-describedby="emailHelp" [(ngModel)]="nombreUsuario" required>
+
+        <!-- <div *ngIf="Email?.errors && Email?.touched">
+          <p *ngIf="Email?.hasError('required')" class="text-danger">
+            El email es requerido.
+          </p>
+          <p *ngIf="Email?.hasError('email')" class="text-danger">
+            El formato del email debe ser válido.
+          </p>
+        </div> -->
+      </div>
+
+      <div class="mb-3 password-container">
+        <label for="password" class="form-label fw-bold">Contraseña</label>
+        <input [type]="show_button ? 'text' : 'password'"  [(ngModel)]="password" required class="form-control w-100" id="password" name="password"><i [class]="show_eye ? 'fa fa-eye' : 'fa fa-eye-slash'" (click)="showPassword()"> </i>
+
+        <!-- <div *ngIf="Password?.errors && Password?.touched">
+          <p *ngIf="Password?.hasError('required')" class="text-danger">
+            La contraseña es requerida.
+          </p>
+          <p *ngIf="Password?.errors?.['minlength']" class="text-danger">
+            La contraseña debe ser de 8 o mas caracteres.
+          </p>
+        </div> -->
+      </div>
+
+      <button type="submit" class="btn btn-secondary ingresar-sesion-boton w-100">Ingresar</button>
+    </fieldset>
+  </form>
+</div>
+
+<!--
+
+<div class="background-sesion">
+
+   <form [formGroup]="form" class="mx-auto sesion-form border p-4" (ngSubmit)="onEnviar($event)">
+    <fieldset>
+      <legend class="sesion-titulo mb-4 fw-bold">Iniciar Sesión</legend>
+      <div class="mb-3">
+        <label for="InputEmail" class="form-label fw-bold">Correo Electrónico</label>
+        <input type="email" formControlName="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" [ngClass]="{'is-invalid': Email?.errors && Email?.touched}">
         <div *ngIf="Email?.errors && Email?.touched">
           <p *ngIf="Email?.hasError('required')" class="text-danger">
             El email es requerido.
@@ -16,8 +56,8 @@
         </div>
       </div>
       <div class="mb-3 password-container">
-        <label for="exampleInputPassword1" class="form-label fw-bold">Contraseña</label>
-        <input [type]="show_button ? 'text' : 'password'" formControlName="password" class="form-control w-100" id="InputPassword"><i [class]="show_eye ? 'fa fa-eye' : 'fa fa-eye-slash'" (click)="showPassword()"> </i>
+        <label for="InputPassword" class="form-label fw-bold">Contraseña</label>
+        <input [type]="show_button ? 'text' : 'password'" [ngClass]="{'is-invalid': Password?.errors && Password?.touched}" [(ngModel)]="password" required formControlName="password" class="form-control w-100" id="InputPassword"><i [class]="show_eye ? 'fa fa-eye' : 'fa fa-eye-slash'" (click)="showPassword()"> </i>
 
         <div *ngIf="Password?.errors && Password?.touched">
           <p *ngIf="Password?.hasError('required')" class="text-danger">
@@ -33,3 +73,5 @@
     </fieldset>
   </form>
 </div>
+
+-->

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Routes } from '@angular/router';
+import { HabilidadesComponent } from '../habilidades/habilidades.component';
 
 @Component({
   selector: 'app-portfolio',
@@ -6,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./portfolio.component.css']
 })
 export class PortfolioComponent implements OnInit {
+
 
   constructor() { }
 
