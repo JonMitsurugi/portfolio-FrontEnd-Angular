@@ -1,0 +1,26 @@
+<div class="container">
+  <form (ngSubmit)="onCreate()" novalidate #f="ngForm">
+    <div  class="mb-3">
+      <label for="nombreExp" class="col-form-label">Nombre de la empresa/experiencia</label>
+      <input type="text" class="form-control" id="nombreExp" name="nombreExp" [(ngModel)]="nombreExp" required>
+    </div>
+    <div class="mb-3">
+      <label for="rolExp" class="col-form-label">Rol</label>
+      <input type="text" class="form-control" id="rolExp" name="rolExp" [(ngModel)]="rolExp" required>
+    </div>
+    <div class="mb-3">
+      <label for="fechaInicioExp" class="col-form-label">Fecha de inicio</label>
+      <input type="text" class="form-control" id="fechaInicioExp" name="fechaInicioExp" [(ngModel)]="fechaInicioExp" required>
+    </div>
+    <div class="mb-3">
+      <label for="fechaFinExp" class="col-form-label">Fecha de finalización</label>
+      <input type="text" class="form-control" id="fechaFinExp" name="fechaFinExp" [(ngModel)]="fechaFinExp">
+    </div>
+    <div class="mb-3">
+      <label for="descripcionExp" class="col-form-label">Descripción</label>
+      <input type="text" class="form-control" id="descripcionExp" name="descripcionExp" [(ngModel)]="descripcionExp" required>
+    </div>
+    <button class=" btn btn-primary">Añadir</button>
+  </form>
+
+</div>

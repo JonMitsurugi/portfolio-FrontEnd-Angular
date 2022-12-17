@@ -19,6 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ExperienciaComponent } from './componentes/experiencia/experiencia.component';
 import { interceptorProvider } from './services/interceptor-service';
+import { NewExperienciaComponent } from './componentes/experiencia/new-experiencia.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { interceptorProvider } from './services/interceptor-service';
     FooterComponent,
     IniciarSesionComponent,
     PortfolioComponent,
-    ExperienciaComponent
+    ExperienciaComponent,
+    NewExperienciaComponent
 
   ],
   imports: [
@@ -42,8 +44,8 @@ import { interceptorProvider } from './services/interceptor-service';
     BrowserAnimationsModule,
     DragDropModule,
     ReactiveFormsModule,
-    FormsModule
-
+    FormsModule,
+    RouterModule
   ],
   providers: [interceptorProvider],
   bootstrap: [AppComponent]

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { NewExperienciaComponent } from './componentes/experiencia/new-experiencia.component';
 import { HabilidadesComponent } from './componentes/habilidades/habilidades.component';
 import { IniciarSesionComponent } from './componentes/iniciar-sesion/iniciar-sesion.component';
 import { PortfolioComponent } from './componentes/portfolio/portfolio.component';
@@ -12,7 +13,7 @@ const routes: Routes = [
   {path: '', children: [
     {path: 'habilidades', component:HabilidadesComponent}
   ]},
-
+  {path: 'nuevaexperiencia', component: NewExperienciaComponent},
   {path: 'iniciar-sesion', component:IniciarSesionComponent}
 ];
 

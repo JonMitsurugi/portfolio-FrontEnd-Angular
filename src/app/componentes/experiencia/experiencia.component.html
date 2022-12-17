@@ -1,6 +1,6 @@
 <section class="row my-5" id="">
   <div class="col-md-8 offset-md-2">
-    <h2 id="experiencia" class="text-center fs-2">Experiencia</h2>
+    <h2 id="experiencia" class="text-center fs-2 fw-bold">Experiencia</h2>
     <p class="text-center lead w-lg-50">Estos son los trabajos que me ayudaron a desarrollar mis aptitutes y habilidades.</p>
   </div>
 
@@ -9,18 +9,19 @@
     <li *ngFor="let experiencia of experienciaList" class="experiencia col list-group-item d-flex flex-column justify-content-start">
       <div class="d-flex justify-content-between ms-2">
         <div class="fw-bold mb-1" >
-          <a href="">{{experiencia.name}}</a>
+          <a href="">{{experiencia.nombreExp}}</a>
         </div>
       </div>
-      <small ngPreserveWhitespaces class="periodo-estudio ms-2"><time>{{experiencia.start}}</time> - <time>{{experiencia.end}}</time></small>
-      <small class="small ms-2 mb-1">{{experiencia.role}}</small>
-      <div class="ms-2 mb-1">{{experiencia.description}}</div>
+      <small ngPreserveWhitespaces class="periodo-estudio ms-2"><time>{{experiencia.fechaInicioExp}}</time> - <time>{{experiencia.fechaFinExp}}</time></small>
+      <small class="small ms-2 mb-1">{{experiencia.rolExp}}</small>
+      <div class="ms-2 mb-1">{{experiencia.descripcionExp}}</div>
     </li>
 
-    <li class="col list-group-item d-flex flex-column justify-content-center align-items-center agregar-proyecto">
-      <div class="d-flex justify-content-between" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Tooltip on bottom">
-        <i class="fa-regular fa-plus"></i>
-      </div>
-    </li>
+    <a class="agregar-item-link" href="" role="button" routerLink="/nuevaexperiencia" *ngIf="isLogged">
+      <li class="ms-0 mt-2 mt-md-1 list-group-item d-flex justify-content-start agregar-proyecto align-items-center">
+      <!-- <li class="col list-group-item d-flex flex-column justify-content-start align-items-start agregar-proyecto"> -->
+            <i class="ms-1 fa-regular align-bottom justify-content-end fa-plus"></i><span class="agregar">Agregar item</span>
+      </li>
+    </a>
   </ul>
 </section>
