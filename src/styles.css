@@ -324,3 +324,43 @@ z-index: 200;
   margin: 0;
   padding: 0;
 }
+
+.dropdown-toggle::after {
+  content: none;
+}
+.fa-trash-can {
+  color: #b8130e;
+}
+.borrar {
+  color: #b8130e;
+
+}
+.borrar:hover {
+  background-color: #f0e1e1;
+  color: #b8130e;
+
+}
+.dropdown-item:hover{
+  border-radius: inherit;
+}
+.dropdown-item {
+  width: auto;
+  margin: 0 .4em;
+  padding-left: .4em;
+  /* padding: 8.5px !important; */
+}
+.dropdown-menu {
+  width: 100px;
+}
+
+.btn-opciones {
+  background-color: rgba(208,230,233,1);
+  transition: background-color .2s;
+  border:none
+}
+
+.btn-opciones:hover {
+  background-color: rgb(142, 225, 228);
+  border: none;
+}
+
