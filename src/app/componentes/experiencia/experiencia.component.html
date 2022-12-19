@@ -7,13 +7,22 @@
   <ul class="proyecto row row-cols-1 row-cols-lg-2 mx-auto ">
     <hr>
     <li *ngFor="let experiencia of experienciaList" class="experiencia col list-group-item d-flex flex-column justify-content-start">
-      <div class="d-flex justify-content-between ms-2">
-        <div class="fw-bold mb-1" >
+      <div class="d-flex justify-content-start ms-2">
+        <div class="fw-bold mb-1 me-2 fs-5" >
           <a href="">{{experiencia.nombreExp}}</a>
+        </div>
+        <div class="dropdown" *ngIf="isLogged" >
+          <button class="btn btn-light btn-opciones btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-ellipsis"></i></button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item"  routerLink="/editarexperiencia/{{experiencia.id}}"><i class="fa-solid fa-pen me-2"></i>Editar</a>
+            <a class="dropdown-item borrar" (click)="borrar(experiencia.id)"><i class="fa-solid fa-trash-can me-2"></i> Borrar</a>
+          </div>
+          <!-- <button *ngIf="isLogged" class="btn btn-light" routerLink="/editarexperiencia/{{experiencia.id}}">Editar</button>
+          <button *ngIf="isLogged" class="btn btn-danger" (click)="borrar(experiencia.id)">Borrar</button> -->
         </div>
       </div>
       <small ngPreserveWhitespaces class="periodo-estudio ms-2"><time>{{experiencia.fechaInicioExp}}</time> - <time>{{experiencia.fechaFinExp}}</time></small>
-      <small class="small ms-2 mb-1">{{experiencia.rolExp}}</small>
+      <small class="small ms-2 mb-1">{{experiencia.rolExp | uppercase}}</small>
       <div class="ms-2 mb-1">{{experiencia.descripcionExp}}</div>
     </li>
 
