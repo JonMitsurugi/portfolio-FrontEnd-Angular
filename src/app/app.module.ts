@@ -20,6 +20,7 @@ import { RouterModule } from '@angular/router';
 import { ExperienciaComponent } from './componentes/experiencia/experiencia.component';
 import { interceptorProvider } from './services/interceptor-service';
 import { NewExperienciaComponent } from './componentes/experiencia/new-experiencia.component';
+import { EditExperienciaComponent } from './componentes/experiencia/edit-experiencia.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { NewExperienciaComponent } from './componentes/experiencia/new-experienc
     IniciarSesionComponent,
     PortfolioComponent,
     ExperienciaComponent,
-    NewExperienciaComponent
+    NewExperienciaComponent,
+    EditExperienciaComponent
 
   ],
   imports: [

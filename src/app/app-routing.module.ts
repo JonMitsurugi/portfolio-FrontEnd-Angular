@@ -4,6 +4,7 @@ import { NewExperienciaComponent } from './componentes/experiencia/new-experienc
 import { HabilidadesComponent } from './componentes/habilidades/habilidades.component';
 import { IniciarSesionComponent } from './componentes/iniciar-sesion/iniciar-sesion.component';
 import { PortfolioComponent } from './componentes/portfolio/portfolio.component';
+import { EditExperienciaComponent } from './componentes/experiencia/edit-experiencia.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'portfolio', pathMatch:'full'},
@@ -14,6 +15,7 @@ const routes: Routes = [
     {path: 'habilidades', component:HabilidadesComponent}
   ]},
   {path: 'nuevaexperiencia', component: NewExperienciaComponent},
+  {path: 'editarexperiencia/:id', component: EditExperienciaComponent},
   {path: 'iniciar-sesion', component:IniciarSesionComponent}
 ];
 

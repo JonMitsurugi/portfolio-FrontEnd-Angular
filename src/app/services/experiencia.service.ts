@@ -16,7 +16,7 @@ export class ExperienciaService {
   }
 
   public detail(id: number): Observable<Experiencia> {
-    return this.httpClient.get<Experiencia> (this.expUrl + `detail/${id}`);
+    return this.httpClient.get<Experiencia> (this.expUrl +  "detail" + "/" + id);
   }
 
   public save(experiencia: Experiencia): Observable<any> {
@@ -28,7 +28,7 @@ export class ExperienciaService {
   }
 
   public delete(id: number): Observable<any> {
-    return this.httpClient.delete<any>(this.expUrl + `delete/${id}`);
+    return this.httpClient.delete<any>(this.expUrl + `borrar/${id}`);
   }
 
 }
