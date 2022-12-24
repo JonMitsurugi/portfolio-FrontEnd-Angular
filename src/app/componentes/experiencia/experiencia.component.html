@@ -26,11 +26,15 @@
       <div class="ms-2 mb-1">{{experiencia.descripcionExp}}</div>
     </li>
 
-    <a class="agregar-item-link" href="" role="button" routerLink="/nuevaexperiencia" *ngIf="isLogged">
+    <a class="agregar-item-link" href="" type="button" (click)="open()" *ngIf="isLogged" data-bs-toggle="modal">
+    <!-- <a class="agregar-item-link" href="" role="button" routerLink="/nuevaexperiencia" *ngIf="isLogged"> -->
       <li class="ms-0 mt-2 mt-md-1 list-group-item d-flex justify-content-start agregar-proyecto align-items-center">
       <!-- <li class="col list-group-item d-flex flex-column justify-content-start align-items-start agregar-proyecto"> -->
             <i class="ms-1 fa-regular align-bottom justify-content-end fa-plus"></i><span class="agregar">Agregar item</span>
       </li>
     </a>
   </ul>
+
 </section>
+
+

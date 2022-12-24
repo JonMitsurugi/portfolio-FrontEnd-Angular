@@ -3,6 +3,10 @@ import { Experiencia } from 'src/app/models/experiencia';
 import { ExperienciaService } from 'src/app/services/experiencia.service';
 import { PorfolioService } from 'src/app/services/porfolio.service';
 import { TokenService } from 'src/app/services/token.service';
+import { NewExperienciaComponent } from './new-experiencia.component';
+import {NgbModal, ModalDismissReasons, NgbModalOptions, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
+import { NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
+import { AlertService } from 'src/app/services/alert.service';
 
 @Component({
   selector: 'app-experiencia',
@@ -12,12 +16,17 @@ import { TokenService } from 'src/app/services/token.service';
 export class ExperienciaComponent implements OnInit {
 
   experienciaList: Experiencia[] = [];
-
+  closeResult: string;
+  modalOptions:NgbModalOptions;
   // experienciaList: any;
 
-  constructor(private experienciaService: ExperienciaService, private tokenService: TokenService) { }
+  constructor(private alertService: AlertService, private modalService: NgbModal, private experienciaService: ExperienciaService, private tokenService: TokenService) {
+
+  }
+private modalRef: NgbModalRef;
 
   isLogged = false;
+  showToast = true;
 
   ngOnInit(): void {
     this.cargarExperiencia();
@@ -47,4 +56,33 @@ export class ExperienciaComponent implements OnInit {
     }
 
   }
+
+  open() {
+    this.modalRef = this.modalService.open(NewExperienciaComponent);
+    this.modalRef.result.then((result) => {
+      this.cargarExperiencia();
+      //new bootstrap.Toast(document.querySelector('#bt')).show();
+        this.closeResult = `Closed with: ${result}`;
+      }, (reason) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      });
+      console.log(this.closeResult);
+
+
+    }
+
+
+    private getDismissReason(reason: any): string {
+      if (reason === ModalDismissReasons.ESC) {
+        return 'by pressing ESC';
+      } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+        return 'by clicking on a backdrop';
+      } else {
+        return  `with: ${reason}`;
+      }
+    }
+
+
 }
+
+

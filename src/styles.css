@@ -167,7 +167,7 @@ small {
 
 .agregar-proyecto {
   /* margin: 1rem; */
-  min-height: 10rem;
+  min-height: 8rem;
   padding: 1rem;
   /* outline: 2px dashed #999; */
   /* outline-offset: -1rem; */
@@ -204,6 +204,8 @@ small {
   /* background:red; */
   opacity: 1;
   z-index: 0;
+  color: #212529;
+
 
 }
 .estudios > .agregar-proyecto {
@@ -239,7 +241,10 @@ small {
   z-index: 300;
   position: relative;
   display: inline-block;
+  cursor: pointer;
 }
+
+
 /* html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
 
@@ -338,7 +343,7 @@ z-index: 200;
 .borrar:hover {
   background-color: #f0e1e1;
   color: #b8130e;
-
+  cursor: pointer;
 }
 .dropdown-item:hover{
   border-radius: inherit;
@@ -354,6 +359,7 @@ z-index: 200;
 }
 
 .btn-opciones {
+  color: #777;
   background-color: rgba(208,230,233,1);
   transition: background-color .2s;
   border:none
@@ -364,3 +370,13 @@ z-index: 200;
   border: none;
 }
 
+.toast {
+  height: 3rem;;
+}
+
+.btn-cerrar {
+  background-color: rgb(204, 49, 49);
+  transition: background-color .2s;
+  border:none;
+  color:#f0e1e1;
+}

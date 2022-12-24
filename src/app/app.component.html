@@ -1,3 +1,13 @@
 <div>
   <router-outlet></router-outlet>
+  <div *ngIf="showAlert" [ngClass]="{'text-bg-success': toastType === 'exito', 'text-bg-danger': toastType === 'error' }"  class="top-0 start-50 translate-middle-x exitoso position-fixed toast mt-5 show align-items-center  border-0" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body">
+        {{message}}
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    </div>
 </div>
+<!-- [ngStyle]="{'background-color': toastType === 'exito' ? 'green' : 'red' }" -->
+<!-- [ngStyle]="{'color': toastType === 'exito' ? 'white' : 'black' }" -->

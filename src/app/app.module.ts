@@ -21,6 +21,7 @@ import { ExperienciaComponent } from './componentes/experiencia/experiencia.comp
 import { interceptorProvider } from './services/interceptor-service';
 import { NewExperienciaComponent } from './componentes/experiencia/new-experiencia.component';
 import { EditExperienciaComponent } from './componentes/experiencia/edit-experiencia.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,11 @@ import { EditExperienciaComponent } from './componentes/experiencia/edit-experie
     DragDropModule,
     ReactiveFormsModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    NgbModule,
+  ],
+  entryComponents:[
+    NewExperienciaComponent
   ],
   providers: [interceptorProvider],
   bootstrap: [AppComponent]
