@@ -1,6 +1,6 @@
 <div>
   <router-outlet></router-outlet>
-  <div *ngIf="showAlert" [ngClass]="{'text-bg-success': toastType === 'exito', 'text-bg-danger': toastType === 'error' }"  class="top-0 start-50 translate-middle-x exitoso position-fixed toast mt-5 show align-items-center  border-0" role="alert" aria-live="assertive" aria-atomic="true">
+  <div *ngIf="showAlert" [ngClass]="{'text-bg-success': toastType === 'exito', 'text-bg-danger': toastType === 'error' }"  class="translate-middle-x exitoso position-fixed toast  mt-5 show align-items-center  border-0" data-bs-animation="true" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="d-flex">
       <div class="toast-body">
         {{message}}

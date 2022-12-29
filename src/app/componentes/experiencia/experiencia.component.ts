@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ComponentRef, OnInit } from '@angular/core';
 import { Experiencia } from 'src/app/models/experiencia';
 import { ExperienciaService } from 'src/app/services/experiencia.service';
 import { PorfolioService } from 'src/app/services/porfolio.service';
@@ -7,6 +7,8 @@ import { NewExperienciaComponent } from './new-experiencia.component';
 import {NgbModal, ModalDismissReasons, NgbModalOptions, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
 import { NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
 import { AlertService } from 'src/app/services/alert.service';
+import { ActivatedRoute, Route, Router } from '@angular/router';
+import { EditExperienciaComponent } from './edit-experiencia.component';
 
 @Component({
   selector: 'app-experiencia',
@@ -15,12 +17,16 @@ import { AlertService } from 'src/app/services/alert.service';
 })
 export class ExperienciaComponent implements OnInit {
 
+  //  inputExperiencia = new Experiencia
+
+  //experiencia: Experiencia = null;
+
   experienciaList: Experiencia[] = [];
   closeResult: string;
   modalOptions:NgbModalOptions;
   // experienciaList: any;
 
-  constructor(private alertService: AlertService, private modalService: NgbModal, private experienciaService: ExperienciaService, private tokenService: TokenService) {
+  constructor(private router: Router,private activatedRoute: ActivatedRoute,private alertService: AlertService, private modalService: NgbModal, private experienciaService: ExperienciaService, private tokenService: TokenService) {
 
   }
 private modalRef: NgbModalRef;
@@ -57,8 +63,13 @@ private modalRef: NgbModalRef;
 
   }
 
-  open() {
-    this.modalRef = this.modalService.open(NewExperienciaComponent);
+  open(componentName: string ) {
+    const mapper = {
+      'NewExperienciaComponent': NewExperienciaComponent,
+      'EditExperienciaComponent': EditExperienciaComponent,
+    }
+
+    this.modalRef = this.modalService.open(mapper[componentName as keyof typeof mapper]);
     this.modalRef.result.then((result) => {
       this.cargarExperiencia();
       //new bootstrap.Toast(document.querySelector('#bt')).show();
@@ -83,6 +94,21 @@ private modalRef: NgbModalRef;
     }
 
 
+
+
+    openEditModal(experiencia: any) {
+      const modalRef = this.modalService.open(EditExperienciaComponent);
+      modalRef.componentInstance.inputExperiencia = experiencia;
+
+      this.modalRef.result.then((result) => {
+        this.cargarExperiencia();
+        //new bootstrap.Toast(document.querySelector('#bt')).show();
+          this.closeResult = `Closed with: ${result}`;
+        }, (reason) => {
+          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        });
+        console.log(this.closeResult);
+      }
 }
 
 

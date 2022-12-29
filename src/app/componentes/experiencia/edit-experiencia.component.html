@@ -1,4 +1,6 @@
-<div class="container" *ngIf="experiencia">
+
+
+  <!-- <div class="modal container" *ngIf="experiencia">
   <form (ngSubmit)="onUpdate()" novalidate #f="ngForm">
     <div  class="mb-3">
       <label for="nombreExp" class="col-form-label">Nombre de la empresa/experiencia</label>
@@ -23,4 +25,48 @@
     <button class=" btn btn-primary">Actualizar</button>
   </form>
 
+</div> -->
+
+<div class="modal-dialog m-0 rounded-0" *ngIf="inputExperiencia" role="document">
+  <div class="modal-content border-0 rounded-0 p-3 mb-0">
+
+    <div class="modal-header border-0 rounded-0 ">
+    <h4 class="modal-title">Editar Experiencia</h4>
+
+    <button class="btn btn-light btn-cerrar " aria-label="Close" type="button" (click)="activeModal.dismiss('Cross click')"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div class="modal-body pt-0">
+    <form (ngSubmit)="onUpdate()" novalidate #f="ngForm">
+      <div  class="mb-2">
+        <label for="nombreExp" class="col-form-label fw-bold">Nombre de la empresa / experiencia</label>
+        <input type="text" class="form-control" id="nombreExp" name="nombreExp" [(ngModel)]="inputExperiencia.nombreExp" required>
+      </div>
+      <div class="mb-2">
+        <label for="rolExp" class="col-form-label fw-bold">Rol</label>
+        <input type="text" class="form-control" id="rolExp" name="rolExp" [(ngModel)]="inputExperiencia.rolExp" required>
+      </div>
+      <div class="row">
+        <div class="mb-2 col-6">
+          <label for="fechaInicioExp" class="col-form-label fw-bold">Fecha de inicio</label>
+          <input type="text" class="form-control row-col-6" id="fechaInicioExp" name="fechaInicioExp" [(ngModel)]="inputExperiencia.fechaInicioExp" required>
+        </div>
+
+        <div class="mb-2 col-6">
+          <label for="fechaFinExp" class="col-form-label fw-bold">Fecha de finalización</label>
+          <input type="text" class="form-control row-col-6" id="fechaFinExp" name="fechaFinExp" [(ngModel)]="inputExperiencia.fechaFinExp">
+        </div>
+      </div>
+      <div class="mb-2">
+        <label for="descripcionExp" class="col-form-label fw-bold">Descripción</label>
+        <input type="text" class="form-control" id="descripcionExp" name="descripcionExp" [(ngModel)]="inputExperiencia.descripcionExp" #descripcion="ngModel" [ngClass]="{'is-valid': descripcion.touched && descripcion.valid, 'is-invalid': descripcion.touched && descripcion.invalid}" required>
+      </div>
+      <p *ngIf="descripcion.errors && (descripcion.invalid || descripcion.touched)" class="text-danger">
+        Campo requerido.
+      </p>
+    <button type="submit"class="mt-3 btn btn-primary w-100" >Actualizar</button>
+
+    </form>
+  </div>
+
+  </div>
 </div>

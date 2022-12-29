@@ -380,3 +380,13 @@ z-index: 200;
   border:none;
   color:#f0e1e1;
 }
+
+.modal-pepe {
+  display: block !important;
+}
+
+.toast {
+  bottom: 30px;
+  left: 200px;
+
+}

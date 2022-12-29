@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Experiencia } from 'src/app/models/experiencia';
 import { ExperienciaService } from 'src/app/services/experiencia.service';
 import {NgbModal, ModalDismissReasons, NgbModalOptions, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
@@ -17,6 +17,8 @@ export class NewExperienciaComponent implements OnInit {
   closeResult: string;
   modalOptions:NgbModalOptions;
 
+  experiencia: Experiencia = null;
+
   nombreExp: string = '';
   fechaInicioExp?: number ;
   fechaFinExp?: number;
@@ -24,7 +26,7 @@ export class NewExperienciaComponent implements OnInit {
   descripcionExp: string = '';
 
 
-  constructor(private alertService: AlertService,private modalService: NgbModal,public activeModal: NgbActiveModal, private experienciaService: ExperienciaService, private router: Router) {
+  constructor(private activatedRoute: ActivatedRoute,private alertService: AlertService,private modalService: NgbModal,public activeModal: NgbActiveModal, private experienciaService: ExperienciaService, private router: Router) {
     this.modalOptions = {
       backdrop:'static',
       backdropClass:'customBackdrop'
@@ -49,6 +51,18 @@ export class NewExperienciaComponent implements OnInit {
     )
   }
 
+  onUpdate(): void {
+    const id = this.activatedRoute.snapshot.params['id'];
+    this.experienciaService.update(id, this.experiencia).subscribe(
+      data => {
+        //this.router.navigate(['']);
+      this.activeModal.close();
+     this.alertService.showAlert("Experiencia actualizada exitosamente", 7000, "exito");
+      }, err => {
+        //this.activeModal.close();
+      this.alertService.showAlert("Error al modificar experiencia", 7000, "error");
+    })
+  }
 
 
 // open(content: any) {

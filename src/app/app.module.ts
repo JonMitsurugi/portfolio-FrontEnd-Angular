@@ -21,7 +21,8 @@ import { ExperienciaComponent } from './componentes/experiencia/experiencia.comp
 import { interceptorProvider } from './services/interceptor-service';
 import { NewExperienciaComponent } from './componentes/experiencia/new-experiencia.component';
 import { EditExperienciaComponent } from './componentes/experiencia/edit-experiencia.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ExperienciaService } from './services/experiencia.service';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   entryComponents:[
     NewExperienciaComponent
   ],
-  providers: [interceptorProvider],
+  providers: [interceptorProvider, NgbActiveModal],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Experiencia } from 'src/app/models/experiencia';
 import { ExperienciaService } from 'src/app/services/experiencia.service';
+import { NgbActiveModal, NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
+import { AlertService } from 'src/app/services/alert.service';
+
 
 @Component({
   selector: 'app-edit-experiencia',
@@ -10,32 +13,58 @@ import { ExperienciaService } from 'src/app/services/experiencia.service';
 })
 export class EditExperienciaComponent implements OnInit {
 
-  experiencia: Experiencia = null;
+  @Input() inputExperiencia: Experiencia;
 
-  constructor(private experienciaService: ExperienciaService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
-  ngOnInit(): void {
-    const id = this.activatedRoute.snapshot.params['id'];
-    this.experienciaService.detail(id).subscribe(
-      data => {
-        this.experiencia = data;
-      }, err => {
-        alert("Error al modificar experiencia.");
-        this.router.navigate(['']);
-    })
+  //experiencia: Experiencia = null;
+  modalOptions:NgbModalOptions;
 
-  }
+ nombreExp: string = '';
+ fechaInicioExp?: number ;
+ fechaFinExp?: number;
+ rolExp: string = '';
+ descripcionExp: string = '';
+
+  constructor(private alertService: AlertService,private experienciaService: ExperienciaService, private activatedRoute: ActivatedRoute, private router: Router, public activeModal: NgbActiveModal) {
+    this.modalOptions = {
+      backdrop:'static',
+      backdropClass:'customBackdrop'
+    }  }
+
+    ngOnInit(): void {
+      // const id = this.activatedRoute.snapshot.params['id'];
+      //  this.experienciaService.detail(this.inputExperiencia.id).subscribe(
+      //     data => {
+      //       this.inputExperiencia = data;
+      //       alert("Hasta aca cargo bien.");
+      //     }, err => {
+      //       alert("Error al modificar experiencia AHHHHHH.");
+      // })
+    }
 
   onUpdate(): void {
-    const id = this.activatedRoute.snapshot.params['id'];
-    this.experienciaService.update(id, this.experiencia).subscribe(
+    //const id = this.activatedRoute.snapshot.params['id'];
+    this.experienciaService.update(this.inputExperiencia.id, this.inputExperiencia).subscribe(
       data => {
-        this.router.navigate(['']);
+        //this.router.navigate(['']);
+      this.activeModal.close(this.inputExperiencia);
+     this.alertService.showAlert("Experiencia actualizada exitosamente", 7000, "exito");
       }, err => {
-        alert("Error al modificar experiencia.");
-        this.router.navigate(['']);
+      this.activeModal.close(this.inputExperiencia);
+      this.alertService.showAlert("Error al modificar experiencia", 7000, "error");
     })
   }
 
+  // onCreate(): void {
+  //   const experiencia = new Experiencia(this.nombreExp, this.fechaInicioExp!, this.fechaFinExp!, this.rolExp, this.descripcionExp);
+  //   this.experienciaService.save(experiencia).subscribe(data => {
+  //     this.activeModal.close();
+  //     this.alertService.showAlert("Experiencia añadida exitosamente", 7000, "exito");
+  //     }, err => {
+  //     this.activeModal.close();
+  //     this.alertService.showAlert("La carga de la experiencia falló", 7000, "error");
+  //     }
+  //   )
+  // }
 
 }
