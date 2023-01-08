@@ -9,6 +9,8 @@ import { NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
 import { AlertService } from 'src/app/services/alert.service';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { EditExperienciaComponent } from './edit-experiencia.component';
+import { HttpErrorResponse } from '@angular/common/http';
+import { UtilsService } from 'src/app/services/utils.service';
 
 @Component({
   selector: 'app-experiencia',
@@ -21,21 +23,28 @@ export class ExperienciaComponent implements OnInit {
 
   //experiencia: Experiencia = null;
 
-  experienciaList: Experiencia[] = [];
   closeResult: string;
   modalOptions:NgbModalOptions;
+  public pepe: any = [];
+  experienciaList: any[];
   // experienciaList: any;
 
-  constructor(private router: Router,private activatedRoute: ActivatedRoute,private alertService: AlertService, private modalService: NgbModal, private experienciaService: ExperienciaService, private tokenService: TokenService) {
+  constructor(public utils: UtilsService,private router: Router,private activatedRoute: ActivatedRoute,private alertService: AlertService, private modalService: NgbModal, public experienciaService: ExperienciaService, private tokenService: TokenService) {
+
+
 
   }
-private modalRef: NgbModalRef;
+  private modalRef: NgbModalRef;
 
   isLogged = false;
   showToast = true;
 
+
+
   ngOnInit(): void {
+    // this.cargarExp(this.experienciaService, this.experienciaList)
     this.cargarExperiencia();
+    // this.utils.cargar(this.experienciaService,this.experienciaList);
     if(this.tokenService.getToken()) {
       this.isLogged = true;
     } else {
@@ -46,22 +55,34 @@ private modalRef: NgbModalRef;
       //   this.experienciaList = data.experience);
 
   }
+
   cargarExperiencia(): void {
-    this.experienciaService.lista().subscribe(data => {this.experienciaList = data;})
-  }
+    this.experienciaService.lista().subscribe({
+      next: (data: Experiencia[]) => {
+        console.log(data);
+        this.experienciaList = data;
+      },
+      error: (error: HttpErrorResponse) => {
+        alert(error.message);
+      },
+    });
+  } //
 
   borrar(id?: number): void {
     if (id !== undefined) {
-      this.experienciaService.delete(id).subscribe(
-        data => {
+      this.experienciaService.delete(id).subscribe({
+        next: (data: Experiencia) => {
+          console.log(data);
           this.cargarExperiencia();
-        }, err => {
-          alert("No se pudó eliminar.")
+        },
+        error: (error: HttpErrorResponse) => {
+          alert(error.message);
         }
-      )
+      })
     }
-
   }
+
+
 
   open(componentName: string ) {
     const mapper = {
@@ -72,6 +93,7 @@ private modalRef: NgbModalRef;
     this.modalRef = this.modalService.open(mapper[componentName as keyof typeof mapper]);
     this.modalRef.result.then((result) => {
       this.cargarExperiencia();
+      //  this.utils.cargar(this.experienciaService,this.experienciaList);
       //new bootstrap.Toast(document.querySelector('#bt')).show();
         this.closeResult = `Closed with: ${result}`;
       }, (reason) => {
@@ -100,15 +122,18 @@ private modalRef: NgbModalRef;
       const modalRef = this.modalService.open(EditExperienciaComponent);
       modalRef.componentInstance.inputExperiencia = experiencia;
 
-      this.modalRef.result.then((result) => {
-        this.cargarExperiencia();
+      modalRef.result.then((result) => {
+         this.cargarExperiencia();
         //new bootstrap.Toast(document.querySelector('#bt')).show();
           this.closeResult = `Closed with: ${result}`;
         }, (reason) => {
+      this.cargarExperiencia();
+
           this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
         });
         console.log(this.closeResult);
       }
+
 }
 
 
