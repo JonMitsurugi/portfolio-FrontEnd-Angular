@@ -16,31 +16,16 @@ export class EditExperienciaComponent implements OnInit {
 
   @Input() inputExperiencia: Experiencia;
 
-
-  //experiencia: Experiencia = null;
   modalOptions:NgbModalOptions;
   experienciaList: Experiencia[] = [];
- nombreExp: string = '';
- fechaInicioExp?: number ;
- fechaFinExp?: number;
- rolExp: string = '';
- descripcionExp: string = '';
 
   constructor(private alertService: AlertService,private experienciaService: ExperienciaService, private activatedRoute: ActivatedRoute, private router: Router, public activeModal: NgbActiveModal) {
     this.modalOptions = {
-      //backdrop:'static',
       backdropClass:'customBackdrop'
     }  }
 
     ngOnInit(): void {
-      // const id = this.activatedRoute.snapshot.params['id'];
-      //  this.experienciaService.detail(this.inputExperiencia.id).subscribe(
-      //     data => {
-      //       this.inputExperiencia = data;
-      //       alert("Hasta aca cargo bien.");
-      //     }, err => {
-      //       alert("Error al modificar experiencia AHHHHHH.");
-      // })
+
     }
 
     cargarExperiencia(): void {
@@ -55,34 +40,19 @@ export class EditExperienciaComponent implements OnInit {
       });
     }
 
-  onUpdate(): void {
-    //const id = this.activatedRoute.snapshot.params['id'];
-    this.experienciaService.update(this.inputExperiencia.id, this.inputExperiencia).subscribe({
-      next: (data: Experiencia) => {
-        //this.router.navigate(['']);
-      this.activeModal.close(JSON.stringify(this.inputExperiencia) );
-      this.cargarExperiencia();
-      this.alertService.showAlert("Experiencia actualizada exitosamente", 7000, "exito");
-    },
-    error: (error:HttpErrorResponse) => {
-      alert(error.message)
-      this.cargarExperiencia();
-      this.activeModal.dismiss();
-      this.alertService.showAlert("Error al modificar experiencia", 7000, "error");
-      }
-    })
-  }
-
-  // onCreate(): void {
-  //   const experiencia = new Experiencia(this.nombreExp, this.fechaInicioExp!, this.fechaFinExp!, this.rolExp, this.descripcionExp);
-  //   this.experienciaService.save(experiencia).subscribe(data => {
-  //     this.activeModal.close();
-  //     this.alertService.showAlert("Experiencia añadida exitosamente", 7000, "exito");
-  //     }, err => {
-  //     this.activeModal.close();
-  //     this.alertService.showAlert("La carga de la experiencia falló", 7000, "error");
-  //     }
-  //   )
-  // }
-
+    onUpdate(): void {
+      this.experienciaService.update(this.inputExperiencia.id, this.inputExperiencia).subscribe({
+        next: (data: Experiencia) => {
+        this.activeModal.close(JSON.stringify(this.inputExperiencia) );
+        this.cargarExperiencia();
+        this.alertService.showAlert("Experiencia actualizada exitosamente", 7000, "exito");
+      },
+      error: (error:HttpErrorResponse) => {
+        alert(error.message)
+        this.cargarExperiencia();
+        this.activeModal.dismiss();
+        this.alertService.showAlert("Error al modificar experiencia", 7000, "error");
+        }
+      })
+    }
 }

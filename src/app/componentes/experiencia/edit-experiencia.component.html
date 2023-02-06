@@ -48,12 +48,12 @@
       <div class="row">
         <div class="mb-2 col-6">
           <label for="fechaInicioExp" class="col-form-label fw-bold">Fecha de inicio</label>
-          <input type="text" class="form-control row-col-6" id="fechaInicioExp" name="fechaInicioExp" [(ngModel)]="inputExperiencia.fechaInicioExp" required>
+          <input type="number" [min]="1900" [max]="2099" maxlength= "4" ng-pattern="/^\d{4}$/" step="1" class="form-control row-col-6" id="fechaInicioExp" name="fechaInicioExp" [(ngModel)]="inputExperiencia.fechaInicioExp" required>
         </div>
 
         <div class="mb-2 col-6">
           <label for="fechaFinExp" class="col-form-label fw-bold">Fecha de finalización</label>
-          <input type="text" class="form-control row-col-6" id="fechaFinExp" name="fechaFinExp" [(ngModel)]="inputExperiencia.fechaFinExp">
+          <input type="number" [min]="1900" [max]="2099" maxlength= "4"  ng-pattern="/\d/" step="1" class="form-control row-col-6" id="fechaFinExp" name="fechaFinExp" [(ngModel)]="inputExperiencia.fechaFinExp">
         </div>
       </div>
       <div class="mb-2">

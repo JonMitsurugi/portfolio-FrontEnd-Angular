@@ -5,15 +5,24 @@
   <ul class="row row-cols-2 row-cols-sm-3 row-cols-lg-4 g-4 pe-0 mt-0">
     <li *ngFor="let habilidad of habilidadList" class="">
       <div class="card">
-          <img [src]="habilidad.image" class="card-img-top" alt="..." >
-        <div class="">
-          <h5 class="mt-2 card-title fw-bold">{{habilidad.name}}</h5>
+          <img [src]="habilidad.urlImgHab" class="card-img-top" alt="..." >
+        <div class="d-flex justify-content-start  ms-2">
+          <h5 class="mt-2 card-title fw-bold me-2">{{habilidad.nombreHab}}</h5>
+          <div class="dropdown" *ngIf="isLogged" >
+            <button class="btn btn-light btn-opciones btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-ellipsis"></i></button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item"  data-bs-toggle="modal"  (click)="editModal(habilidad)"><i class="fa-solid fa-pen me-2"></i>Editar</a>
+              <a class="dropdown-item borrar" (click)="borrar(habilidad.id)"><i class="fa-solid fa-trash-can me-2"></i>Borrar</a>
+            </div>
+          </div>
         </div>
       </div>
     </li>
 
+    <a class="agregar-item-link" href="" type="button" (click)="newModal()" *ngIf="isLogged" data-bs-toggle="modal">
     <li class="col agregar-proyecto d-flex justify-content-start align-items-center mt-1">
       <i class="ms-0 fa-regular align-bottom justify-content-end fa-plus"></i><span class="agregar">Agregar item</span>
     </li>
+    </a>
   </ul>
 </section>

@@ -23,6 +23,12 @@ import { NewExperienciaComponent } from './componentes/experiencia/new-experienc
 import { EditExperienciaComponent } from './componentes/experiencia/edit-experiencia.component';
 import { NgbActiveModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ExperienciaService } from './services/experiencia.service';
+import { NewProyectoComponent } from './componentes/proyectos/new-proyecto.component';
+import { EditProyectoComponent } from './componentes/proyectos/edit-proyecto.component';
+import { NewEstudioComponent } from './componentes/estudios/new-estudio.component';
+import { EditEstudioComponent } from './componentes/estudios/edit-estudio.component';
+import { NewHabilidadComponent } from './componentes/habilidades/new-habilidad.component';
+import { EditHabilidadComponent } from './componentes/habilidades/edit-habilidad.component';
 
 @NgModule({
   declarations: [
@@ -38,8 +44,13 @@ import { ExperienciaService } from './services/experiencia.service';
     PortfolioComponent,
     ExperienciaComponent,
     NewExperienciaComponent,
-    EditExperienciaComponent
-
+    EditExperienciaComponent,
+    NewProyectoComponent,
+    EditProyectoComponent,
+    NewEstudioComponent,
+    EditEstudioComponent,
+    NewHabilidadComponent,
+    EditHabilidadComponent
   ],
   imports: [
     BrowserModule,

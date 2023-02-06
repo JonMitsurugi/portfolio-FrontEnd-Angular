@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Experiencia } from 'src/app/models/experiencia';
 import { ExperienciaService } from 'src/app/services/experiencia.service';
@@ -14,14 +14,17 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class NewExperienciaComponent implements OnInit {
 
+  @Input() creationObject: any;
+  @Output() addedData = new EventEmitter();
+
+
   title = 'ng-bootstrap-modal-demo';
   closeResult: string;
   modalOptions:NgbModalOptions;
 
   experiencia: Experiencia = null;
-
   nombreExp: string = '';
-  fechaInicioExp?: number ;
+  fechaInicioExp: number ;
   fechaFinExp?: number;
   rolExp: string = '';
   descripcionExp: string = '';
@@ -33,7 +36,6 @@ export class NewExperienciaComponent implements OnInit {
       backdropClass:'customBackdrop'
     }
    }
-  // constructor(private experienciaService: ExperienciaService, private router: Router) { }
 
   modalReference: NgbModalRef;
 
@@ -52,28 +54,15 @@ export class NewExperienciaComponent implements OnInit {
         this.activeModal.dismiss();
       this.alertService.showAlert("La carga de la experiencia falló", 7000, "error");
 
-  })
+    })
   }
 
-
-
-// open(content: any) {
-//   this.modalService.open(content, this.modalOptions).result.then((result) => {
-//     this.closeResult = `Closed with: ${result}`;
-//   }, (reason) => {
-//     this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-//   });
-// }
-
-// private getDismissReason(reason: any): string {
-//   if (reason === ModalDismissReasons.ESC) {
-//     return 'by pressing ESC';
-//   } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-//     return 'by clicking on a backdrop';
-//   } else {
-//     return  `with: ${reason}`;
-//   }
-// }
+  checkNumberFieldLength(elem: any){
+    let filterValue = (elem.target as HTMLInputElement).value;
+    if (filterValue.length > 4) {
+        filterValue = filterValue.slice(0,4);
+    }
+}
 }
 
 

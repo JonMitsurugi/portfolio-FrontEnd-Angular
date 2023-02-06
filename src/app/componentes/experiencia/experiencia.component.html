@@ -55,7 +55,7 @@
     <li *ngFor="let experiencia of experienciaList" class="experiencia col list-group-item d-flex flex-column justify-content-start">
       <div class="d-flex justify-content-start ms-2">
         <div class="fw-bold mb-1 me-2 fs-5" >
-          <a href="">{{experiencia.nombreExp}}</a>
+          <span>{{experiencia.nombreExp}}</span>
         </div>
         <div class="dropdown" *ngIf="isLogged" >
           <button class="btn btn-light btn-opciones btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-ellipsis"></i></button>
@@ -77,11 +77,9 @@
     <!-- <a class="agregar-item-link" href="" role="button" routerLink="/nuevaexperiencia" *ngIf="isLogged"> -->
       <li class="ms-0 mt-2 mt-md-1 list-group-item d-flex justify-content-start agregar-proyecto align-items-center">
       <!-- <li class="col list-group-item d-flex flex-column justify-content-start align-items-start agregar-proyecto"> -->
-            <i class="ms-1 fa-regular align-bottom justify-content-end fa-plus"></i><span class="agregar">Agregar item</span>
+            <i class="ms-1 fa-regular align-bottom justify-content-end fa-plus"></i><span class="agregar">Añadir Experiencia</span>
       </li>
     </a>
   </ul>
 
 </section>
-
-
