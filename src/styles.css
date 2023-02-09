@@ -14,7 +14,7 @@ html {
 }
 
 body {
-  font-family: "Lato", sans-serif !important;
+  font-family: 'Rubik', sans-serif !important;
   color: #212529;
   margin: 0;
   padding: 0;
@@ -389,4 +389,12 @@ z-index: 200;
   bottom: 30px;
   left: 200px;
 
+}
+.img-habilidad {
+  height: 5rem;
+  width: 5rem;
+}
+.progress-bar {
+  background: rgb(22,151,181);
+background: linear-gradient(86deg, rgba(22,151,181,1) 60%, rgb(12, 183, 206) 90%);
 }
