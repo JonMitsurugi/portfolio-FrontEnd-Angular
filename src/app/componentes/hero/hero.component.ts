@@ -21,7 +21,7 @@ export class HeroComponent implements OnInit {
     ;
   } */
 
-  persona: Persona = new Persona('','','');
+  persona: Persona = new Persona('','','','','');
 
 
   constructor(public personaService: PersonaService, private datosPorfolio: PorfolioService) { }
