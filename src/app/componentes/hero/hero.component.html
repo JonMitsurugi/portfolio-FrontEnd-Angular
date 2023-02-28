@@ -1,12 +1,17 @@
 
 <section class="hero" [style.background-image] = "'url(' + persona.imgFondo + ')'">
-  <div class="row d-flex justify-content-center ">
-    <div class=" foto-cara mb-3" [style.background-image] = "'url(' + persona.imgPerfil + ')'"></div>
+  <div class="row d-flex align-items-center ">
+    <div class="my-4 d-flex justify-content-center">
+      <div class=" foto-cara mb-3" [style.background-image] = "'url(' + persona.imgPerfil + ')'"><button *ngIf="isLogged" class="btn btn-light btn-opciones btn-perfil" type="button" (click)="editModal(persona)"><i class="fa-solid fa-pen fa-lg"></i></button></div>
+
+    </div>
     <h1 ngPreserveWhitespaces class="fw-bold text-center fs-1"><span id="nombre">{{persona.nombre}}</span> <span id="apellido">{{persona.apellido}}</span></h1>
     <h2 ngPreserveWhitespaces class=" text-center text-white"><span id="nombre">{{persona.descripcion}}</span> </h2>
     <!-- <p class=" fw-bold text-center lead w-lg-50 text-white fs-3" id="">{{miPorfolio.position}}</p> -->
     <p class=" fw-bold text-center lead w-lg-50 text-white fs-3" id=""></p>
     <!-- <p class=" text-center lead w-lg-50 text-white fs-5" id="">{{miPorfolio.location}}</p> -->
     <p class=" text-center lead w-lg-50 text-white fs-5" id=""></p>
+
+
   </div>
 </section>
