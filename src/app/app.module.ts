@@ -29,6 +29,7 @@ import { NewEstudioComponent } from './componentes/estudios/new-estudio.componen
 import { EditEstudioComponent } from './componentes/estudios/edit-estudio.component';
 import { NewHabilidadComponent } from './componentes/habilidades/new-habilidad.component';
 import { EditHabilidadComponent } from './componentes/habilidades/edit-habilidad.component';
+import { EditHeroComponent } from './componentes/hero/edit-hero.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { EditHabilidadComponent } from './componentes/habilidades/edit-habilidad
     NewEstudioComponent,
     EditEstudioComponent,
     NewHabilidadComponent,
-    EditHabilidadComponent
+    EditHabilidadComponent,
+    EditHeroComponent,
   ],
   imports: [
     BrowserModule,

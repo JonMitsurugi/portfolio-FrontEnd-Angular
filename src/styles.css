@@ -14,7 +14,7 @@ html {
 }
 
 body {
-  font-family: "Lato", sans-serif !important;
+  font-family: 'Rubik', sans-serif !important;
   color: #212529;
   margin: 0;
   padding: 0;
@@ -313,9 +313,9 @@ z-index: 200;
   height: 10em;
   width: 10em;
   border-radius: 50%;
-  background-color: #451869;
+  background-size: contain;
   display: inline-block;
-  /* margin-bottom: 1em; */
+  position: relative;
 }
 
 
@@ -389,4 +389,22 @@ z-index: 200;
   bottom: 30px;
   left: 200px;
 
+}
+.img-habilidad {
+  height: 5rem;
+  width: 5rem;
+}
+.progress-bar {
+  background: rgb(22,151,181);
+background: linear-gradient(86deg, rgba(22,151,181,1) 60%, rgb(12, 183, 206) 90%);
+}
+
+.btn-perfil {
+  border-radius: 50% 50%;
+  display: inline-block;
+  height: 4em;
+  width: 4em;
+  position: absolute;
+  right: -20px;
+  bottom: -10px;
 }

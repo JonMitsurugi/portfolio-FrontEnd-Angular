@@ -18,6 +18,9 @@ export class NewHabilidadComponent implements OnInit {
   habilidad: Habilidad = null;
   nombreHab: string = '';
   urlImgHab: string = '';
+  descripcionHab: string = '';
+  progresoHab: number = 0;
+
 
   constructor(private activatedRoute: ActivatedRoute,private alertService: AlertService,private modalService: NgbModal,public activeModal: NgbActiveModal, private habilidadService: HabilidadService) {
     this.modalOptions = {
@@ -33,17 +36,16 @@ export class NewHabilidadComponent implements OnInit {
   }
 
   onCreate(): void {
-    const habilidad = new Habilidad(this.nombreHab, this.urlImgHab);
+    const habilidad = new Habilidad(this.nombreHab, this.urlImgHab, this.descripcionHab, this.progresoHab);
     this.habilidadService.save(habilidad).subscribe(
       () => {
-      this.activeModal.close();
-      this.alertService.showAlert("Experiencia añadida exitosamente", 7000, "exito");
+        this.activeModal.close();
+        this.alertService.showAlert("Experiencia añadida exitosamente", 7000, "exito");
       },
       (err: HttpErrorResponse) => {
       alert(err.message);
         this.activeModal.dismiss();
-      this.alertService.showAlert("La carga de la habilidad falló", 7000, "error");
-
+        this.alertService.showAlert("La carga de la habilidad falló", 7000, "error");
     })
   }
 

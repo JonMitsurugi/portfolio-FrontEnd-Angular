@@ -8,11 +8,24 @@ import { Persona } from '../models/persona.model';
 })
 export class PersonaService {
 
-  url = 'http://localhost:8080/personas';
+  url = 'http://localhost:8080/personas/';
 
-  constructor(private http: HttpClient ) {}
+  constructor(private httpClient: HttpClient ) {}
 
-  public getPersona(): Observable<Persona> {
-    return this.http.get<Persona>(this.url +'/traer');
+  public lista(): Observable<Persona> {
+    return this.httpClient.get<Persona>(this.url +'lista');
   }
+
+  public detail(id: number): Observable<Persona> {
+    return this.httpClient.get<Persona> (this.url +  "detail" + "/" + id);
+  }
+
+  public save(persona: Persona): Observable<any> {
+    return this.httpClient.post<any>(this.url + 'crear', persona);
+  }
+
+  public update(id: number, persona: Persona): Observable<any> {
+    return this.httpClient.put<any> (this.url + `actualizar/${id}`, persona);
+  }
+
 }
