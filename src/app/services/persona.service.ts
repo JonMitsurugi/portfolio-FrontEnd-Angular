@@ -8,7 +8,8 @@ import { Persona } from '../models/persona.model';
 })
 export class PersonaService {
 
-  url = 'http://localhost:8080/personas/';
+  url = 'http://porfolio-jonmitsurugi.koyeb.app/personas/';
+  // url = 'http://localhost:8080/personas/';
 
   constructor(private httpClient: HttpClient ) {}
 

@@ -8,7 +8,8 @@ import { Estudio } from '../models/estudio';
 })
 export class EstudioService {
 
-  estUrl = 'http://localhost:8080/estudio/'
+  estUrl = 'http://porfolio-jonmitsurugi.koyeb.app/estudio/'
+  // estUrl = 'http://localhost:8080/estudio/'
 
   constructor(private httpClient: HttpClient) { }
 

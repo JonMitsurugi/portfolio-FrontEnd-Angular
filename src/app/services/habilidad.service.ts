@@ -8,7 +8,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class HabilidadService {
 
-  estUrl = 'http://localhost:8080/habilidad/'
+  estUrl = 'http://porfolio-jonmitsurugi.koyeb.app/habilidad/'
+  // estUrl = 'http://localhost:8080/habilidad/'
 
   constructor(private httpClient: HttpClient) { }
 
