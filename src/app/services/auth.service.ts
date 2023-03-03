@@ -10,7 +10,7 @@ import { NuevoUsuario } from '../models/nuevo-usuario';
 })
 export class AuthService {
 
-  authUrl = 'http://porfolio-jonmitsurugi.koyeb.app/auth/';
+  authUrl = 'https://porfolio-jonmitsurugi.koyeb.app/auth/';
   // authUrl = 'http://localhost:8080/auth/';
 
   constructor(private httpClient: HttpClient) { }

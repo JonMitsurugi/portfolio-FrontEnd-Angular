@@ -7,7 +7,7 @@ import { Experiencia } from '../models/experiencia';
   providedIn: 'root'
 })
 export class ExperienciaService {
-  expUrl = 'http://porfolio-jonmitsurugi.koyeb.app/experiencia/'
+  expUrl = 'https://porfolio-jonmitsurugi.koyeb.app/experiencia/'
   // expUrl = 'http://localhost:8080/experiencia/'
 
   constructor(private httpClient: HttpClient) { }
