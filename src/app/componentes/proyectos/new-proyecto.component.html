@@ -2,38 +2,48 @@
   <div class="modal-content border-0 rounded-0 p-3 mb-0">
 
 <div class="modal-header border-0 rounded-0 ">
-  <h4 class="modal-title">Añadir Proyecto</h4>
+  <h4 class="modal-title">Crear Proyecto</h4>
   <button class="btn btn-light btn-cerrar " aria-label="Close" type="button" (click)="activeModal.dismiss('Cross click')"><i class="fa-solid fa-xmark"></i></button>
 </div>
 <div class="modal-body pt-0">
-  <form (ngSubmit)="onCreate()" novalidate #f="ngForm">
+  <form [formGroup]="crudForm" (ngSubmit)="onCreate()" novalidate #f="ngForm" class="">
     <div  class="mb-2">
       <label for="nombrePro" class="col-form-label fw-bold">Nombre del proyecto </label>
-      <input type="text" class="form-control" id="nombrePro" name="nombrePro" [(ngModel)]="nombrePro" required>
+      <input type="text" class="form-control" [ngClass]="{'is-invalid': crudForm.controls['nombrePro'].invalid && (crudForm.controls['nombrePro'].dirty || crudForm.controls['nombrePro'].touched)}" id="nombrePro" name="nombrePro" formControlName="nombrePro" required>
+      <div *ngIf="crudForm.controls['nombrePro'].invalid && (crudForm.controls['nombrePro'].dirty || crudForm.controls['nombrePro'].touched)" class="invalid-feedback">
+        <div  *ngIf="crudForm.controls['nombrePro'].errors['required']" >El nombre es obligatorio.</div>
+      </div>
     </div>
+
     <div  class="mb-2">
       <label for="urlPro" class="col-form-label fw-bold">Url del proyecto</label>
-      <input type="text" class="form-control" id="urlPro" name="urlPro" [(ngModel)]="urlPro" required>
+      <input type="text" class="form-control" id="urlPro" name="urlPro" formControlName="urlPro">
     </div>
+
     <div class="mb-2">
       <label for="tipoPro" class="col-form-label fw-bold">Tipo</label>
-      <input type="text" class="form-control" id="tipoPro" name="tipoPro" [(ngModel)]="tipoPro" required>
+      <input type="text" class="form-control" [ngClass]="{'is-invalid': crudForm.controls['tipoPro'].invalid && (crudForm.controls['tipoPro'].dirty || crudForm.controls['tipoPro'].touched)}" id="tipoPro" name="tipoPro" formControlName="tipoPro" required>
+      <div *ngIf="crudForm.controls['tipoPro'].invalid && (crudForm.controls['tipoPro'].dirty || crudForm.controls['tipoPro'].touched)" class="invalid-feedback">
+        <div  *ngIf="crudForm.controls['tipoPro'].errors['required']" >El tipo es obligatorio.</div>
+      </div>
     </div>
 
     <div class="mb-2">
       <label for="descripcionPro" class="col-form-label fw-bold">Descripción</label>
-      <input type="text" class="form-control" id="descripcionPro" name="descripcionPro" [(ngModel)]="descripcionPro" #descripcion="ngModel" [ngClass]="{'is-valid': descripcion.touched && descripcion.valid, 'is-invalid': descripcion.touched && descripcion.invalid}" required>
+      <input type="text" class="form-control" id="descripcionPro" name="descripcionPro" formControlName="descripcionPro" [ngClass]="{'is-invalid': crudForm.controls['descripcionPro'].invalid && (crudForm.controls['descripcionPro'].dirty || crudForm.controls['descripcionPro'].touched)}"  required>
+      <div *ngIf="crudForm.controls['descripcionPro'].invalid && (crudForm.controls['descripcionPro'].dirty || crudForm.controls['descripcionPro'].touched)" class="invalid-feedback">
+        <div  *ngIf="crudForm.controls['descripcionPro'].errors['required']" >La descripcion es obligatoria.</div>
+      </div>
     </div>
-    <p *ngIf="descripcion.errors && (descripcion.invalid || descripcion.touched)" class="text-danger">
-      Campo requerido.
-    </p>
-  <button [disabled]="descripcion.errors" type="submit"class="mt-3 btn btn-primary w-100" >Añadir</button>
+
+    <button type="submit"class="mt-3 btn btn-primary w-100" [disabled]="isSubmitting"  ><span *ngIf="isSubmitting" class="spinner-border spinner-border-sm" role="status"></span>  {{ buttonText }}</button>
 
   </form>
 </div>
 
 </div>
 </div>
+
 
 
 

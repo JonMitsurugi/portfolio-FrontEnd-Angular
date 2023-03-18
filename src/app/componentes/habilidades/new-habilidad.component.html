@@ -6,28 +6,40 @@
   <button class="btn btn-light btn-cerrar " aria-label="Close" type="button" (click)="activeModal.dismiss('Cross click')"><i class="fa-solid fa-xmark"></i></button>
 </div>
 <div class="modal-body pt-0">
-  <form (ngSubmit)="onCreate()" novalidate #f="ngForm">
+  <form [formGroup]="crudForm" (ngSubmit)="onCreate()" novalidate #f="ngForm" class="">
     <div  class="mb-2">
       <label for="nombreHab" class="col-form-label fw-bold">Nombre del habilidad </label>
-      <input type="text" class="form-control" id="nombreHab" name="nombreHab" [(ngModel)]="nombreHab" required>
+      <input type="text" class="form-control" [ngClass]="{'is-invalid': crudForm.controls['nombreHab'].invalid && (crudForm.controls['nombreHab'].dirty || crudForm.controls['nombreHab'].touched)}" id="nombreHab" name="nombreHab" formControlName="nombreHab" required>
+      <div *ngIf="crudForm.controls['nombreHab'].invalid && (crudForm.controls['nombreHab'].dirty || crudForm.controls['nombreHab'].touched)" class="invalid-feedback">
+        <div  *ngIf="crudForm.controls['nombreHab'].errors['required']" >El nombre es obligatorio.</div>
+      </div>
     </div>
 
     <div  class="mb-2">
       <label for="urlImgHab" class="col-form-label fw-bold">Url de la imagen</label>
-      <input type="text" class="form-control" id="urlImgHab" name="urlImgHab" [(ngModel)]="urlImgHab" required>
+      <input type="text" class="form-control" id="urlImgHab" name="urlImgHab" formControlName="urlImgHab" [ngClass]="{'is-invalid': crudForm.controls['urlImgHab'].invalid && (crudForm.controls['urlImgHab'].dirty || crudForm.controls['urlImgHab'].touched)}" required>
+      <div *ngIf="crudForm.controls['urlImgHab'].invalid && (crudForm.controls['urlImgHab'].dirty || crudForm.controls['urlImgHab'].touched)" class="invalid-feedback">
+        <div  *ngIf="crudForm.controls['urlImgHab'].errors['required']" >La entidad es obligatoria.</div>
+      </div>
     </div>
 
     <div  class="mb-2">
       <label for="progresoHab" class="col-form-label fw-bold">Porcentaje de Progreso</label>
-      <input type="text" class="form-control" id="progresoHab" name="progresoHab" [(ngModel)]="progresoHab" required>
+      <input type="text" class="form-control" id="progresoHab" name="progresoHab" formControlName="progresoHab" [ngClass]="{'is-invalid': crudForm.controls['progresoHab'].invalid && (crudForm.controls['progresoHab'].dirty || crudForm.controls['progresoHab'].touched)}"  required>
+      <div *ngIf="crudForm.controls['progresoHab'].invalid && (crudForm.controls['progresoHab'].dirty || crudForm.controls['progresoHab'].touched)" class="invalid-feedback">
+        <div  *ngIf="crudForm.controls['progresoHab'].errors['required']" >El progreso es obligatorio.</div>
+      </div>
     </div>
 
     <div class="mb-2">
       <label for="descripcionHab" class="col-form-label fw-bold">Descripción</label>
-      <input type="text" class="form-control" id="descripcionHab" name="descripcionHab" [(ngModel)]="descripcionHab" #descripcion="ngModel" [ngClass]="{'is-valid': descripcion.touched && descripcion.valid, 'is-invalid': descripcion.touched && descripcion.invalid}" required>
+      <input type="text" class="form-control" id="descripcionHab" name="descripcionHab" formControlName="descripcionHab" [ngClass]="{'is-invalid': crudForm.controls['descripcionHab'].invalid && (crudForm.controls['descripcionHab'].dirty || crudForm.controls['descripcionHab'].touched)}"  required>
+      <div *ngIf="crudForm.controls['descripcionHab'].invalid && (crudForm.controls['descripcionHab'].dirty || crudForm.controls['descripcionHab'].touched)" class="invalid-feedback">
+        <div  *ngIf="crudForm.controls['descripcionHab'].errors['required']" >La descripcion es obligatoria.</div>
+      </div>
     </div>
 
-  <button [disabled]="" type="submit"class="mt-3 btn btn-primary w-100" >Añadir</button>
+    <button type="submit"class="mt-3 btn btn-primary w-100" [disabled]="isSubmitting"  ><span *ngIf="isSubmitting" class="spinner-border spinner-border-sm" role="status"></span>  {{ buttonText }}</button>
 
   </form>
 </div>

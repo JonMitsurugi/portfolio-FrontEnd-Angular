@@ -19,7 +19,7 @@
           </div>
         </div>
           <small class="periodo-estudio lead">{{estudio.lugarEst}}</small>
-          <small ngPreserveWhitespaces class="periodo-estudio"><time>{{estudio.fechaInicioEst}}</time> - <time>{{estudio.fechaFinEst}}</time></small>
+          <small ngPreserveWhitespaces class="periodo-estudio"><time>{{estudio.fechaInicioEst}}</time> - <time>{{estudio.fechaFinEst ? estudio.fechaFinEst : ''}}</time></small>
           <p>{{estudio.descripcionEst}}</p>
         </li>
 

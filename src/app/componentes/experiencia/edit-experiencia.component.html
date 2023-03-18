@@ -27,45 +27,57 @@
 
 </div> -->
 
-<div class="modal-dialog m-0 rounded-0" *ngIf="inputExperiencia" role="document">
+<div class="modal-dialog m-0 rounded-0" role="document">
   <div class="modal-content border-0 rounded-0 p-3 mb-0">
 
     <div class="modal-header border-0 rounded-0 ">
     <h4 class="modal-title">Editar Experiencia</h4>
-
-    <button class="btn btn-light btn-cerrar " aria-label="Close" type="button" (click)="activeModal.dismiss('Cross click')" data-ng-click="cancel()"><i class="fa-solid fa-xmark"></i></button>
+    <button class="btn btn-light btn-cerrar " aria-label="Close" type="button" (click)="activeModal.dismiss('Cross click')"><i class="fa-solid fa-xmark"></i></button>
   </div>
   <div class="modal-body pt-0">
-    <form (ngSubmit)="onUpdate()"  #f="ngForm">
+    <form [formGroup]="crudForm" (ngSubmit)="onUpdate()" novalidate #f="ngForm" class="">
+
       <div  class="mb-2">
         <label for="nombreExp" class="col-form-label fw-bold">Nombre de la empresa / experiencia</label>
-        <input type="text" class="form-control" id="nombreExp" name="nombreExp" [(ngModel)]="inputExperiencia.nombreExp" required>
+        <input type="text" class="form-control" [ngClass]="{'is-invalid': crudForm.controls['nombreExp'].invalid && (crudForm.controls['nombreExp'].dirty || crudForm.controls['nombreExp'].touched)}" id="nombreExp" name="nombreExp" formControlName="nombreExp" required>
+        <div *ngIf="crudForm.controls['nombreExp'].invalid && (crudForm.controls['nombreExp'].dirty || crudForm.controls['nombreExp'].touched)" class="invalid-feedback">
+          <div  *ngIf="crudForm.controls['nombreExp'].errors['required']" >El nombre es obligatorio.</div>
+        </div>
       </div>
+
       <div class="mb-2">
         <label for="rolExp" class="col-form-label fw-bold">Rol</label>
-        <input type="text" class="form-control" id="rolExp" name="rolExp" [(ngModel)]="inputExperiencia.rolExp" required>
+        <input type="text" class="form-control" [ngClass]="{'is-invalid': crudForm.controls['rolExp'].invalid && (crudForm.controls['rolExp'].dirty || crudForm.controls['rolExp'].touched)}" id="rolExp" name="rolExp" formControlName="rolExp" required>
+        <div *ngIf="crudForm.controls['rolExp'].invalid && (crudForm.controls['rolExp'].dirty || crudForm.controls['rolExp'].touched)" class="invalid-feedback">
+        <div  *ngIf="crudForm.controls['rolExp'].errors['required']" >El rol es obligatorio.</div>
+        </div>
       </div>
+
       <div class="row">
         <div class="mb-2 col-6">
           <label for="fechaInicioExp" class="col-form-label fw-bold">Fecha de inicio</label>
-          <input type="number" [min]="1900" [max]="2099" maxlength= "4" ng-pattern="/^\d{4}$/" step="1" class="form-control row-col-6" id="fechaInicioExp" name="fechaInicioExp" [(ngModel)]="inputExperiencia.fechaInicioExp" required>
+          <input type="number" maxlength= "4" ng-pattern="/^\d{4}$/" step="1" class="form-control row-col-6" id="fechaInicioExp" name="fechaInicioExp" formControlName="fechaInicioExp" [ngClass]="{'is-invalid': crudForm.controls['fechaInicioExp'].invalid && (crudForm.controls['fechaInicioExp'].dirty || crudForm.controls['fechaInicioExp'].touched)}" required>
+          <div *ngIf="crudForm.controls['fechaInicioExp'].invalid && (crudForm.controls['fechaInicioExp'].dirty || crudForm.controls['fechaInicioExp'].touched)" class="invalid-feedback">
+              <div *ngIf="crudForm.get('fechaInicioExp').errors['required']">La fecha es obligatoria.</div>
+          </div>
         </div>
-
-        <div class="mb-2 col-6">
-          <label for="fechaFinExp" class="col-form-label fw-bold">Fecha de finalización</label>
-          <input type="number" [min]="1900" [max]="2099" maxlength= "4"  ng-pattern="/\d/" step="1" class="form-control row-col-6" id="fechaFinExp" name="fechaFinExp" [(ngModel)]="inputExperiencia.fechaFinExp">
-        </div>
+          <div class="mb-2 col-6">
+            <label for="fechaFinExp" class="col-form-label fw-bold">Fecha de finalización</label>
+            <input type="number" maxlength= "4"  ng-pattern="/\d/" step="1" class="form-control row-col-6" id="fechaFinExp" name="fechaFinExp" formControlName="fechaFinExp">
+          </div>
       </div>
+
       <div class="mb-2">
         <label for="descripcionExp" class="col-form-label fw-bold">Descripción</label>
-        <input type="text" class="form-control" id="descripcionExp" name="descripcionExp" [(ngModel)]="inputExperiencia.descripcionExp" #descripcion="ngModel" [ngClass]="{'is-valid': descripcion.touched && descripcion.valid, 'is-invalid': descripcion.touched && descripcion.invalid}" required>
+        <input type="text" class="form-control" id="descripcionExp" name="descripcionExp" formControlName="descripcionExp" [ngClass]="{'is-invalid': crudForm.controls['descripcionExp'].invalid && (crudForm.controls['descripcionExp'].dirty || crudForm.controls['descripcionExp'].touched)}"  required>
+        <div *ngIf="crudForm.controls['descripcionExp'].invalid && (crudForm.controls['descripcionExp'].dirty || crudForm.controls['descripcionExp'].touched)" class="invalid-feedback">
+          <div  *ngIf="crudForm.controls['descripcionExp'].errors['required']" >La descripcion es obligatoria.</div>
+        </div>
       </div>
-      <p *ngIf="descripcion.errors && (descripcion.invalid || descripcion.touched)" class="text-danger">
-        Campo requerido.
-      </p>
-    <button type="submit"class="mt-3 btn btn-primary w-100" >Actualizar</button>
 
-    </form>
+      <button type="submit"class="mt-3 btn btn-primary w-100" [disabled]="isSubmitting"  ><span *ngIf="isSubmitting" class="spinner-border spinner-border-sm" role="status"></span>  {{ buttonText }}</button>
+
+   </form>
   </div>
 
   </div>

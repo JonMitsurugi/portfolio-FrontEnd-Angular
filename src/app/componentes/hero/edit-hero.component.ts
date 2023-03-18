@@ -45,13 +45,13 @@ export class EditHeroComponent implements OnInit {
       next: (data: Persona) => {
       this.activeModal.close(JSON.stringify(this.inputPersona));
       this.cargarPersona();
-      this.alertService.showAlert("Experiencia actualizada exitosamente", 7000, "exito");
+      this.alertService.showAlert("Persona actualizada exitosamente", 7000, "exito");
     },
     error: (error:HttpErrorResponse) => {
-      alert(error.message)
+      //alert(error.message)
       this.cargarPersona();
       this.activeModal.dismiss();
-      this.alertService.showAlert("Error al modificar experiencia", 7000, "error");
+      this.alertService.showAlert("Error al actualizar persona", 7000, "error");
       }
     })
   }

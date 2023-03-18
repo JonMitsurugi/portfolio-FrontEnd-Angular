@@ -5,6 +5,7 @@ import { ExperienciaService } from 'src/app/services/experiencia.service';
 import { NgbActiveModal, NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { AlertService } from 'src/app/services/alert.service';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -16,16 +17,32 @@ export class EditExperienciaComponent implements OnInit {
 
   @Input() inputExperiencia: Experiencia;
 
+  isSubmitting = false;
+  buttonText = 'Actualizar';
   modalOptions:NgbModalOptions;
   experienciaList: Experiencia[] = [];
 
-  constructor(private alertService: AlertService,private experienciaService: ExperienciaService, private activatedRoute: ActivatedRoute, private router: Router, public activeModal: NgbActiveModal) {
+  constructor(private alertService: AlertService,private experienciaService: ExperienciaService, public activeModal: NgbActiveModal, private formBuilder: FormBuilder) {
     this.modalOptions = {
       backdropClass:'customBackdrop'
     }  }
 
-    ngOnInit(): void {
+    crudForm: FormGroup = this.formBuilder.group({
+      nombreExp: ['', Validators.required],
+      fechaInicioExp: ['', Validators.required],
+      fechaFinExp: '',
+      rolExp: ['', Validators.required],
+      descripcionExp: ['', Validators.required],
+    })
 
+    ngOnInit(): void {
+      this.crudForm.patchValue({
+        nombreExp: this.inputExperiencia.nombreExp,
+        fechaInicioExp: this.inputExperiencia.fechaInicioExp,
+        fechaFinExp: this.inputExperiencia.fechaFinExp,
+        rolExp: this.inputExperiencia.rolExp,
+        descripcionExp: this.inputExperiencia.descripcionExp
+      })
     }
 
     cargarExperiencia(): void {
@@ -41,17 +58,33 @@ export class EditExperienciaComponent implements OnInit {
     }
 
     onUpdate(): void {
-      this.experienciaService.update(this.inputExperiencia.id, this.inputExperiencia).subscribe({
+      if (!this.crudForm.valid) {
+        event.preventDefault();
+        event.stopPropagation();
+        this.crudForm.markAllAsTouched();
+        return;
+      }
+
+      this.isSubmitting = true;
+      this.buttonText = ' Actualizando...';
+
+      const experiencia = this.crudForm.value;
+      this.experienciaService.update(this.inputExperiencia.id, experiencia).subscribe({
         next: (data: Experiencia) => {
+        this.isSubmitting = false;
+        this.buttonText = 'Enviar';
         this.activeModal.close(JSON.stringify(this.inputExperiencia) );
         this.cargarExperiencia();
         this.alertService.showAlert("Experiencia actualizada exitosamente", 7000, "exito");
       },
       error: (error:HttpErrorResponse) => {
-        alert(error.message)
+        //alert(error.message)
+        //console.log(error.message)
+        this.isSubmitting = false;
+        this.buttonText = 'Enviar';
         this.cargarExperiencia();
         this.activeModal.dismiss();
-        this.alertService.showAlert("Error al modificar experiencia", 7000, "error");
+        this.alertService.showAlert("Error al actualizar experiencia", 7000, "error");
         }
       })
     }

@@ -2,35 +2,38 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Estudio } from '../models/estudio';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EstudioService {
 
-  estUrl = 'https://porfolio-jonmitsurugi.koyeb.app/estudio/'
-  // estUrl = 'http://localhost:8080/estudio/'
+  baseUrl = environment.baseUrl + 'estudio/';
+
+  //baseUrl = 'https://porfolio-jonmitsurugi.koyeb.app/estudio/'
+  // baseUrl = 'http://localhost:8080/estudio/'
 
   constructor(private httpClient: HttpClient) { }
 
   public lista(): Observable<Estudio[]> {
-    return this.httpClient.get<Estudio[]> (this.estUrl + 'lista');
+    return this.httpClient.get<Estudio[]> (this.baseUrl + 'lista');
   }
 
   public detail(id: number): Observable<Estudio> {
-    return this.httpClient.get<Estudio> (this.estUrl +  "detail" + "/" + id);
+    return this.httpClient.get<Estudio> (this.baseUrl +  "detail" + "/" + id);
   }
 
   public save(estudio: Estudio): Observable<any> {
-    return this.httpClient.post<any>(this.estUrl + 'crear', estudio);
+    return this.httpClient.post<any>(this.baseUrl + 'crear', estudio);
   }
 
   public update(id: number, estudio: Estudio): Observable<any> {
-    return this.httpClient.put<any> (this.estUrl + `actualizar/${id}`, estudio);
+    return this.httpClient.put<any> (this.baseUrl + `actualizar/${id}`, estudio);
   }
 
   public delete(id: number): Observable<any> {
-    return this.httpClient.delete<any>(this.estUrl + `borrar/${id}`);
+    return this.httpClient.delete<any>(this.baseUrl + `borrar/${id}`);
   }
 
 

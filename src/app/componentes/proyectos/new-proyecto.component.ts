@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { NgbActiveModal, NgbModal, NgbModalOptions, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { Proyecto } from 'src/app/models/proyecto';
@@ -13,15 +14,15 @@ import { ProyectoService } from 'src/app/services/proyecto.service';
 })
 export class NewProyectoComponent implements OnInit  {
 
+  isSubmitting = false;
+  buttonText = 'Enviar';
+  crudForm: FormGroup;
   modalOptions:NgbModalOptions;
 
   proyecto: Proyecto = null;
-  nombrePro: string = '';
-  urlPro: string;
-  tipoPro: string = '';
-  descripcionPro: string = '';
 
-  constructor(private activatedRoute: ActivatedRoute,private alertService: AlertService,private modalService: NgbModal,public activeModal: NgbActiveModal, private proyectoService: ProyectoService) {
+
+  constructor(private alertService: AlertService,public activeModal: NgbActiveModal, private proyectoService: ProyectoService, private formBuilder: FormBuilder) {
     this.modalOptions = {
       backdrop:'static',
       backdropClass:'customBackdrop'
@@ -32,18 +33,38 @@ export class NewProyectoComponent implements OnInit  {
 
 
   ngOnInit(): void {
+    this.crudForm = this.formBuilder.group({
+      nombrePro: ['', Validators.required],
+      urlPro: '',
+      tipoPro:['', Validators.required],
+      descripcionPro: ['', Validators.required],
+    })
   }
 
   onCreate(): void {
-    const proyecto = new Proyecto(this.nombrePro, this.tipoPro,this.urlPro, this.descripcionPro);
+    if (!this.crudForm.valid) {
+      event.preventDefault();
+      event.stopPropagation();
+      this.crudForm.markAllAsTouched();
+      return;
+    }
+
+    this.isSubmitting = true;
+    this.buttonText = ' Enviando...';
+
+    const proyecto = this.crudForm.value;
     this.proyectoService.save(proyecto).subscribe(
       () => {
+      this.isSubmitting = false;
+      this.buttonText = 'Enviar';
       this.activeModal.close();
       this.alertService.showAlert("Experiencia añadida exitosamente", 7000, "exito");
       },
       (err: HttpErrorResponse) => {
-      alert(err.message);
-        this.activeModal.dismiss();
+      //alert(err.message);
+      this.isSubmitting = false;
+      this.buttonText = 'Enviar';
+      this.activeModal.dismiss();
       this.alertService.showAlert("La carga de la proyecto falló", 7000, "error");
 
     })

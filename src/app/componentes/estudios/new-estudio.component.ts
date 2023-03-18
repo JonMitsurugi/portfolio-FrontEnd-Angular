@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { AbstractControl, AsyncValidatorFn, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { NgbActiveModal, NgbModal, NgbModalOptions, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { Estudio } from 'src/app/models/estudio';
@@ -13,17 +14,15 @@ import { EstudioService } from 'src/app/services/estudio.service';
 })
 export class NewEstudioComponent implements OnInit {
 
+  isSubmitting = false;
+  buttonText = 'Enviar';
+  crudForm: FormGroup;
   modalOptions:NgbModalOptions;
 
   estudio: Estudio = null;
-  nombreEst: string = '';
-  urlImgEst: string = '';
-  fechaInicioEst: number;
-  fechaFinEst?: number;
-  lugarEst: string = '';
-  descripcionEst: string = '';
 
-  constructor(private activatedRoute: ActivatedRoute,private alertService: AlertService,private modalService: NgbModal,public activeModal: NgbActiveModal, private estudioService: EstudioService) {
+
+  constructor(private alertService: AlertService, public activeModal: NgbActiveModal, private estudioService: EstudioService, private formBuilder: FormBuilder) {
     this.modalOptions = {
       backdrop:'static',
       backdropClass:'customBackdrop'
@@ -32,23 +31,46 @@ export class NewEstudioComponent implements OnInit {
 
   modalReference: NgbModalRef;
 
-
   ngOnInit(): void {
+    this.crudForm = this.formBuilder.group({
+      nombreEst: ['', Validators.required],
+      urlImgEst: '',
+      fechaInicioEst: ['', Validators.required],
+      fechaFinEst: '',
+      lugarEst: ['', Validators.required],
+      descripcionEst: ['', Validators.required],
+    })
   }
 
   onCreate(): void {
-    const estudio = new Estudio(this.nombreEst, this.urlImgEst, this.fechaInicioEst, this.fechaFinEst, this.lugarEst, this.descripcionEst);
+    if (!this.crudForm.valid) {
+      event.preventDefault();
+      event.stopPropagation();
+      this.crudForm.markAllAsTouched();
+      return;
+    }
+
+    this.isSubmitting = true;
+    this.buttonText = ' Enviando...';
+
+    const estudio = this.crudForm.value;
     this.estudioService.save(estudio).subscribe(
       () => {
+      this.isSubmitting = false;
+      this.buttonText = 'Enviar';
       this.activeModal.close();
       this.alertService.showAlert("Experiencia añadida exitosamente", 7000, "exito");
-      },
-      (err: HttpErrorResponse) => {
-      alert(err.message);
-        this.activeModal.dismiss();
-      this.alertService.showAlert("La carga de la estudio falló", 7000, "error");
+    },
+    (err: HttpErrorResponse) => {
+      // alert(err.message);
+      this.isSubmitting = false;
+      this.buttonText = 'Enviar';
+      this.activeModal.dismiss();
+      this.alertService.showAlert("La creación del estudio falló", 7000, "error");
 
     })
   }
+
+
 
 }
