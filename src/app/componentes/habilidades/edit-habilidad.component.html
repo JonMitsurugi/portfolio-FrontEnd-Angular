@@ -19,7 +19,7 @@
       <label for="urlImgHab" class="col-form-label fw-bold">Url de la imagen</label>
       <input type="text" class="form-control" id="urlImgHab" name="urlImgHab" formControlName="urlImgHab" [ngClass]="{'is-invalid': crudForm.controls['urlImgHab'].invalid && (crudForm.controls['urlImgHab'].dirty || crudForm.controls['urlImgHab'].touched)}" required>
       <div *ngIf="crudForm.controls['urlImgHab'].invalid && (crudForm.controls['urlImgHab'].dirty || crudForm.controls['urlImgHab'].touched)" class="invalid-feedback">
-        <div  *ngIf="crudForm.controls['urlImgHab'].errors['required']" >La entidad es obligatoria.</div>
+        <div  *ngIf="crudForm.controls['urlImgHab'].errors['required']" >La Url es obligatoria.</div>
       </div>
     </div>
 

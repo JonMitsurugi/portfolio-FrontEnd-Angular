@@ -1,8 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { NgbActiveModal, NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { AlertService } from 'src/app/services/alert.service';
-import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { HttpErrorResponse } from '@angular/common/http';
 import { Habilidad } from 'src/app/models/habilidad';
 import { HabilidadService } from 'src/app/services/habilidad.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
