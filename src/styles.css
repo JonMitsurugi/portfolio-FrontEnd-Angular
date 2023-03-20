@@ -408,3 +408,7 @@ background: linear-gradient(86deg, rgba(22,151,181,1) 60%, rgb(12, 183, 206) 90%
   right: -20px;
   bottom: -10px;
 }
+
+.text-danger {
+  font-size: 14px;
+}
