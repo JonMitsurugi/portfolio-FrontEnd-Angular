@@ -4,7 +4,7 @@
     <p class="text-center lead w-lg-50">Cuento con algunas caracteristicas que me permiten desempeñarme bien dentro de cualquier entorno de trabajo y poder desarrollar actividades en grupo de forma satisfactoria.</p>
   </div>
 
-  <ul class="proyecto row row-cols-1 row-cols-lg-2 m-auto ">
+  <div class="proyecto row row-cols-1 row-cols-lg-2 m-auto ">
     <hr>
     <li *ngFor="let habilidad of habilidadList" class="experiencia list-group-item d-flex flex-column justify-content-start">
       <div class="d-flex flex-column gap-3 m-2">
@@ -36,10 +36,10 @@
     </li>
 
     <a class="agregar-item-link" href="" type="button" (click)="newModal()" *ngIf="isLogged" data-bs-toggle="modal">
-      <li class="ms-0 mt-2 mt-md-1 list-group-item d-flex justify-content-start agregar-proyecto align-items-center">
+      <div class="ms-0 mt-2 mt-md-1 list-group-item d-flex agregar-proyecto align-items-center">
             <i class="ms-1 fa-regular align-bottom justify-content-end fa-plus"></i><span class="agregar">Añadir Habilidad</span>
-      </li>
+      </div>
     </a>
-  </ul>
+  </div>
 
 </section>

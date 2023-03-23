@@ -1,85 +1,36 @@
-<!-- Modal -->
-<!-- <div class="modal fade rounded-0" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog m-0 " role="document">
-    <div class="modal-content rounded-0">
-      <div class="modal-header border-0">
-        <h4 class="modal-title" id="exampleModalLabel">Editar Experiencia</h4>
-        <button type="button" class="btn btn-light btn-cerrar " data-bs-dismiss="modal" aria-label="Close">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
-      </div>
-      <div class="modal-body pt-0">
-        <form (ngSubmit)="onUpdate()" novalidate #f="ngForm">
-          <div  class="mb-2">
-            <label for="nombreExp" class="col-form-label fw-bold">Nombre de la empresa / experiencia</label>
-            <input type="text" class="form-control" id="nombreExp" name="nombreExp"  required>
-          </div>
-          <div class="mb-2">
-            <label for="rolExp" class="col-form-label fw-bold">Rol</label>
-            <input type="text" class="form-control" id="rolExp" name="rolExp"  required>
-          </div>
-          <div class="row">
-            <div class="mb-2 col-6">
-              <label for="fechaInicioExp" class="col-form-label fw-bold">Fecha de inicio</label>
-              <input type="text" class="form-control row-col-6" id="fechaInicioExp" name="fechaInicioExp"  required>
-            </div>
-
-            <div class="mb-2 col-6">
-              <label for="fechaFinExp" class="col-form-label fw-bold">Fecha de finalización</label>
-              <input type="text" class="form-control row-col-6" id="fechaFinExp" name="fechaFinExp">
-            </div>
-          </div>
-          <div class="mb-2">
-            <label for="descripcionExp" class="col-form-label fw-bold">Descripción</label>
-            <input type="text" class="form-control" id="descripcionExp" name="descripcionExp" required>
-          </div>
-
-        <button type="submit"class="mt-3 btn btn-primary w-100" >Añadir</button>
-
-        </form>
-      </div>
-    </div>
-  </div>
-</div> -->
-
-
-<!-- Experiencia -->
-<section class="row my-5 " id="">
-  <div class="col-md-8 offset-md-2">
-    <h2 id="experiencia" class="text-center fs-2 fw-bold">Experiencia</h2>
-    <p class="text-center lead w-lg-50">Estos son los trabajos que me ayudaron a desarrollar mis aptitutes y habilidades.</p>
+<section class="my-5 " id="">
+  <div class="col-md-8 ">
+    <h2 id="experiencia" class=" titulo">Experiencia</h2>
+    <p class="info w-lg-50">Estos son los trabajos que me ayudaron a desarrollar mis aptitutes y habilidades.</p>
   </div>
 
-  <ul class="proyecto row row-cols-1 row-cols-lg-2 mx-auto ">
-    <hr>
-    <li *ngFor="let experiencia of experienciaList" class="experiencia col list-group-item d-flex flex-column justify-content-start">
-      <div class="d-flex justify-content-start ms-2">
-        <div class="fw-bold mb-1 me-2 fs-5" >
-          <span>{{experiencia.nombreExp}}</span>
-        </div>
+  <div class="container-grid">
+    <div *ngFor="let experiencia of experienciaList" class="item-lista d-flex flex-column">
+      <div class="ms-2 g-5">
+          <h3 class="titulo-item mb-0" >
+            {{experiencia.nombreExp}}
+          </h3>
         <div class="dropdown" *ngIf="isLogged" >
-          <button class="btn btn-light btn-opciones btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-ellipsis"></i></button>
+          <button class="btn btn-light btn-edicion btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-ellipsis"></i></button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item"  data-bs-toggle="modal"  (click)="openEditModal(experiencia)"><i class="fa-solid fa-pen me-2"></i>Editar</a>
-            <!-- <a class="dropdown-item"  data-toggle="modal" data-target="#exampleModal" routerLink="/editarexperiencia/{{experiencia.id}}"><i class="fa-solid fa-pen me-2"></i>Editar</a> -->
-            <a class="dropdown-item borrar" (click)="borrar(experiencia.id)"><i class="fa-solid fa-trash-can me-2"></i> Borrar</a>
+            <a class="dropdown-item"  data-bs-toggle="modal" (click)="openEditModal(experiencia)"><i class="fa-solid fa-pen me-2"></i>Editar</a>
+            <a class="dropdown-item opcion-borrar" (click)="borrar(experiencia.id)"><i class="fa-solid fa-trash-can me-2"></i>Borrar</a>
           </div>
-          <!-- <button *ngIf="isLogged" class="btn btn-light" routerLink="/editarexperiencia/{{experiencia.id}}">Editar</button>
-          <button *ngIf="isLogged" class="btn btn-danger" (click)="borrar(experiencia.id)">Borrar</button> -->
         </div>
       </div>
-      <small ngPreserveWhitespaces class="periodo-estudio ms-2"><time>{{experiencia.fechaInicioExp}}</time> - <time>{{experiencia.fechaFinExp}}</time></small>
-      <small class="small ms-2 mb-1">{{experiencia.rolExp | uppercase}}</small>
-      <div class="ms-2 mb-1">{{experiencia.descripcionExp}}</div>
-    </li>
+      <p class="fs-5 ms-2 mb-1">{{experiencia.rolExp | uppercase}}</p>
+      <small ngPreserveWhitespaces class="ms-2"><time>{{experiencia.fechaInicioExp}}</time> - <time>{{experiencia.fechaFinExp}}</time></small>
+      <div class="descripcion-item ms-2 mb-1">{{experiencia.descripcionExp}}</div>
+    </div>
 
-    <a class="agregar-item-link" href="" type="button" (click)="open('NewExperienciaComponent')" *ngIf="isLogged" data-bs-toggle="modal">
-    <!-- <a class="agregar-item-link" href="" role="button" routerLink="/nuevaexperiencia" *ngIf="isLogged"> -->
-      <li class="ms-0 mt-2 mt-md-1 list-group-item d-flex justify-content-start agregar-proyecto align-items-center">
-      <!-- <li class="col list-group-item d-flex flex-column justify-content-start align-items-start agregar-proyecto"> -->
-            <i class="ms-1 fa-regular align-bottom justify-content-end fa-plus"></i><span class="agregar">Añadir Experiencia</span>
-      </li>
+    <a class="" href="" type="button" (click)="open('NewExperienciaComponent')" *ngIf="isLogged" data-bs-toggle="modal">
+        <div class="d-flex container-añadir-item justify-content-center  col align-items-center">
+          <div class="btn-añadir-item align-items-center d-flex gap-2 ">
+            <i class="fa-regular align-bottom justify-content-end fa-plus"></i><span class=" d-inline-block">Añadir Experiencia</span>
+          </div>
+        </div>
     </a>
-  </ul>
+
+  </div>
 
 </section>
