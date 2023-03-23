@@ -253,9 +253,13 @@ ul {
   height: 5rem;
   width: 5rem;
 }
+.progress {
+  border-radius: 4px;
+  height: .8em;
+}
 .progress-bar {
   background: rgb(22,151,181);
-background: linear-gradient(86deg, rgba(22,151,181,1) 60%, rgb(12, 183, 206) 90%);
+/* background: linear-gradient(86deg, rgba(22,151,181,1) 60%, rgb(12, 183, 206) 90%); */
 }
 
 .btn-perfil {
@@ -284,13 +288,13 @@ background: linear-gradient(86deg, rgba(22,151,181,1) 60%, rgb(12, 183, 206) 90%
 /** ITEM DE LISTAS */
 .container-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
   gap: 1.5em 1.5em;
 }
 
-@media (max-width: 992px) {
+@media (min-width: 992px) {
   .container-grid {
-    grid-template-rows: minmax(164px,100%);
+    grid-template-rows: minmax(173px,100%);
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -317,6 +321,12 @@ background: linear-gradient(86deg, rgba(22,151,181,1) 60%, rgb(12, 183, 206) 90%
   display:inline-block;
   font-size: 1.6em;
   font-weight: bold;
+  line-height: normal;
+  margin-bottom: 0;
+}
+
+time {
+  font-size: 1.2em;
 }
 
 .descripcion-item {
@@ -380,12 +390,13 @@ background: linear-gradient(86deg, rgba(22,151,181,1) 60%, rgb(12, 183, 206) 90%
   border-radius: 5px !important;
   background-color: inherit;
   transition: border .2s;
-  min-height: 100%;
+  min-height: 173px;
 }
 
-@media (max-width: 992px) {
+@media (min-width: 992px) {
   .container-añadir-item {
-    min-height: 164px ;
+    min-height: 173px;
+    height: 100%;
   }
 }
 
@@ -414,4 +425,43 @@ background: linear-gradient(86deg, rgba(22,151,181,1) 60%, rgb(12, 183, 206) 90%
   color:inherit;
   z-index: 299;
   position: relative;
+}
+
+/*NAVBAR*/
+.logo-argentina-programa {
+  height: auto;
+  width: 36px;
+  display: inline-block;
+  vertical-align: top;
+}
+/*ESTUDIOS*/
+.lugar-estudio {
+  font-size: 1.4em;
+  /* color:#116979 ; */
+}
+
+/*HABILIDAD*/
+@media (min-width: 992px) {
+  .habilidad-grid {
+    grid-template-rows: minmax(173px,100%);
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+/*EXPERIENCIA*/
+.rol-experiencia {
+  font-size: 1.1em;
+  color:#116979 ;
+}
+
+/*PROYECTOS*/
+h3 a:hover {
+  color:#116979;
+  text-decoration: underline;
+  text-decoration-color: #116979;
+  text-decoration-thickness: 2px ;
+}
+
+.tipo-proyecto {
+  font-size: 1.2em;
+  font-style: italic;
 }

@@ -1,5 +1,5 @@
-<section class="my-5 " id="">
-  <div class="col-md-8 ">
+<section class="my-5" id="">
+  <div class="col-md-10">
     <h2 id="experiencia" class=" titulo">Experiencia</h2>
     <p class="info w-lg-50">Estos son los trabajos que me ayudaron a desarrollar mis aptitutes y habilidades.</p>
   </div>
@@ -7,9 +7,9 @@
   <div class="container-grid">
     <div *ngFor="let experiencia of experienciaList" class="item-lista d-flex flex-column">
       <div class="ms-2 g-5">
-          <h3 class="titulo-item mb-0" >
-            {{experiencia.nombreExp}}
-          </h3>
+        <h3 class="titulo-item" >
+          {{experiencia.nombreExp}}
+        </h3>
         <div class="dropdown" *ngIf="isLogged" >
           <button class="btn btn-light btn-edicion btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-ellipsis"></i></button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -18,19 +18,20 @@
           </div>
         </div>
       </div>
-      <p class="fs-5 ms-2 mb-1">{{experiencia.rolExp | uppercase}}</p>
-      <small ngPreserveWhitespaces class="ms-2"><time>{{experiencia.fechaInicioExp}}</time> - <time>{{experiencia.fechaFinExp}}</time></small>
+
+      <p class="rol-experiencia ms-2 mb-1">{{experiencia.rolExp | uppercase}}</p>
+      <div ngPreserveWhitespaces class="ms-2"><time>{{experiencia.fechaInicioExp}}</time> - <time>{{experiencia.fechaFinExp ? experiencia.fechaFinExp : ''}}</time></div>
       <div class="descripcion-item ms-2 mb-1">{{experiencia.descripcionExp}}</div>
     </div>
 
     <a class="" href="" type="button" (click)="open('NewExperienciaComponent')" *ngIf="isLogged" data-bs-toggle="modal">
-        <div class="d-flex container-añadir-item justify-content-center  col align-items-center">
-          <div class="btn-añadir-item align-items-center d-flex gap-2 ">
-            <i class="fa-regular align-bottom justify-content-end fa-plus"></i><span class=" d-inline-block">Añadir Experiencia</span>
-          </div>
+      <div class="d-flex container-añadir-item justify-content-center col align-items-center">
+        <div class="btn-añadir-item align-items-center d-flex gap-2">
+          <i class="fa-regular align-bottom justify-content-end fa-plus"></i>
+          <span class=" d-inline-block">Añadir Experiencia</span>
         </div>
+      </div>
     </a>
-
   </div>
 
 </section>

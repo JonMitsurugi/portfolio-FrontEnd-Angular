@@ -1,43 +1,43 @@
-<section class="row my-5 " id="">
-  <div class="col-md-8 offset-md-2">
-    <h2 id="experiencia" class="text-center fs-2 fw-bold">Habilidades</h2>
-    <p class="text-center lead w-lg-50">Cuento con algunas caracteristicas que me permiten desempeñarme bien dentro de cualquier entorno de trabajo y poder desarrollar actividades en grupo de forma satisfactoria.</p>
+<section class="my-5 " id="">
+  <div class="col-md-10">
+    <h2 id="" class="titulo">Habilidades</h2>
+    <p class="info w-lg-50">Cuento con algunas caracteristicas que me permiten desempeñarme bien dentro de cualquier entorno de trabajo y poder desarrollar actividades en grupo de forma satisfactoria.</p>
   </div>
 
-  <div class="proyecto row row-cols-1 row-cols-lg-2 m-auto ">
-    <hr>
-    <li *ngFor="let habilidad of habilidadList" class="experiencia list-group-item d-flex flex-column justify-content-start">
-      <div class="d-flex flex-column gap-3 m-2">
-        <div class="d-flex gap-3">
-          <div class="img-habilidad">
+  <div class="container-grid habilidad-grid">
+    <div *ngFor="let habilidad of habilidadList" class="item-lista d-flex flex-column">
+      <div class="d-flex d-lg-inline-block gap-2 gap-lg-0">
+
+        <div class="img-habilidad ms-lg-2 ms-0 my-1">
             <img [src]="habilidad.urlImgHab" class="card-img-top" alt="..." >
-          </div>
-          <div class="">
-            <div class="d-flex justify-content-start">
-              <div class="fw-bold mb-1 me-2 fs-5" >
-                <span>{{habilidad.nombreHab}}</span>
-              </div>
-              <div class="dropdown" *ngIf="isLogged" >
-                <button class="btn btn-light btn-opciones btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-ellipsis"></i></button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item"  data-bs-toggle="modal"  (click)="editModal(habilidad)"><i class="fa-solid fa-pen me-2"></i>Editar</a>
-                  <a class="dropdown-item borrar" (click)="borrar(habilidad.id)"><i class="fa-solid fa-trash-can me-2"></i> Borrar</a>
-                </div>
-              </div>
-            </div>
-            <p class="mb-1">{{habilidad.descripcionHab}}</p>
-          </div>
         </div>
-        <div class="progress">
-          <div class="progress-bar"  [ngStyle]="{ 'width': habilidad.progresoHab + '%' }" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
+        <div>
+          <div class="ms-2 g-5">
+            <h3 class="titulo-item">{{habilidad.nombreHab}}</h3>
+            <div class="dropdown" *ngIf="isLogged" >
+            <button class="btn btn-light btn-edicion btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-ellipsis"></i></button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item"  data-bs-toggle="modal"  (click)="editModal(habilidad)"><i class="fa-solid fa-pen me-2"></i>Editar</a>
+              <a class="dropdown-item opcion-borrar" (click)="borrar(habilidad.id)"><i class="fa-solid fa-trash-can me-2"></i> Borrar</a>
+            </div>
+          </div>
+          <div class="progress my-2">
+            <div class="progress-bar"  [ngStyle]="{ 'width': habilidad.progresoHab + '%' }" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <div class="descripcion-item mb-1">{{habilidad.descripcionHab}}</div>
         </div>
       </div>
+    </div>
 
-    </li>
 
-    <a class="agregar-item-link" href="" type="button" (click)="newModal()" *ngIf="isLogged" data-bs-toggle="modal">
-      <div class="ms-0 mt-2 mt-md-1 list-group-item d-flex agregar-proyecto align-items-center">
-            <i class="ms-1 fa-regular align-bottom justify-content-end fa-plus"></i><span class="agregar">Añadir Habilidad</span>
+  </div>
+
+    <a class="" href="" type="button" (click)="newModal()" *ngIf="isLogged" data-bs-toggle="modal">
+      <div class="d-flex container-añadir-item justify-content-center col align-items-center">
+        <div class="btn-añadir-item align-items-center d-flex gap-2">
+          <i class="fa-regular align-bottom justify-content-end fa-plus"></i>
+          <span class=" d-inline-block">Añadir Experiencia</span>
+        </div>
       </div>
     </a>
   </div>
