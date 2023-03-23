@@ -1,10 +1,10 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { NgbActiveModal, NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
+import { Component, Input, OnInit } from '@angular/core';
+import { NgbActiveModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { AlertService } from 'src/app/services/alert.service';
-import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { HttpErrorResponse } from '@angular/common/http';
 import { Persona } from 'src/app/models/persona.model';
 import { PersonaService } from 'src/app/services/persona.service'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-hero',
@@ -15,17 +15,33 @@ export class EditHeroComponent implements OnInit {
 
   @Input() inputPersona: Persona;
 
+  isSubmitting = false;
+  buttonText = 'Actualizar';
   modalOptions:NgbModalOptions;
   persona: Persona;
 
-  constructor(private alertService: AlertService,private personaService: PersonaService, private activatedRoute: ActivatedRoute, private router: Router, public activeModal: NgbActiveModal) {
+  constructor(private alertService: AlertService,private personaService: PersonaService, public activeModal: NgbActiveModal, private formBuilder: FormBuilder) {
     this.modalOptions = {
       backdropClass:'customBackdrop'
     }
   }
 
-  ngOnInit(): void {
+  crudForm: FormGroup = this.formBuilder.group({
+    nombre: ['', Validators.required],
+    apellido: ['', Validators.required],
+    descripcion: ['', Validators.required],
+    imgFondo: ['', Validators.required],
+    imgPerfil: ['', Validators.required],
+  })
 
+  ngOnInit(): void {
+    this.crudForm.patchValue({
+      nombre: this.inputPersona.nombre,
+      apellido: this.inputPersona.apellido,
+      descripcion: this.inputPersona.descripcion,
+      imgFondo: this.inputPersona.imgFondo,
+      imgPerfil: this.inputPersona.imgPerfil
+    })
   }
 
   cargarPersona(): void {
@@ -41,13 +57,24 @@ export class EditHeroComponent implements OnInit {
   }
 
   onUpdate(): void {
-    this.personaService.update(this.inputPersona.id, this.inputPersona).subscribe({
-      next: (data: Persona) => {
+    if (!this.crudForm.valid) {
+      event.preventDefault();
+      event.stopPropagation();
+      this.crudForm.markAllAsTouched();
+      return;
+    }
+
+    this.isSubmitting = true;
+    this.buttonText = ' Actualizando...';
+
+    const persona = this.crudForm.value;
+    this.personaService.update(this.inputPersona.id, persona).subscribe({
+      next: () => {
       this.activeModal.close(JSON.stringify(this.inputPersona));
       this.cargarPersona();
       this.alertService.showAlert("Persona actualizada exitosamente", 7000, "exito");
     },
-    error: (error:HttpErrorResponse) => {
+    error: () => {
       //alert(error.message)
       this.cargarPersona();
       this.activeModal.dismiss();

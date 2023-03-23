@@ -1,25 +1,26 @@
 <div class="background-sesion">
 
-  <form #f="ngForm" class="mx-auto sesion-form border p-4" (ngSubmit)="onLogin()" novalidate>
+  <form #f="ngForm" class="mx-auto sesion-form border p-4" (ngSubmit)="onLogin()" [formGroup]="form" novalidate>
     <fieldset>
       <legend class="sesion-titulo mb-4 fw-bold">Iniciar Sesión</legend>
       <div class="mb-3">
-        <label for="nombreUsuario" class="form-label fw-bold">Correo Electrónico</label>
-        <input type="email" class="form-control" id="nombreUsuario" name="nombreUsuario" aria-describedby="emailHelp" [(ngModel)]="nombreUsuario" required>
-
-        <!-- <div *ngIf="Email?.errors && Email?.touched">
-          <p *ngIf="Email?.hasError('required')" class="text-danger">
-            El email es requerido.
-          </p>
-          <p *ngIf="Email?.hasError('email')" class="text-danger">
-            El formato del email debe ser válido.
-          </p>
-        </div> -->
+        <label for="nombreUsuario" class="form-label fw-bold">Nombre de Usuario</label>
+        <input type="text" class="form-control" [ngClass]="{'is-invalid': form.controls['nombreUsuario'].invalid && (form.controls['nombreUsuario'].dirty || form.controls['nombreUsuario'].touched)}" id="nombreUsuario" name="nombreUsuario" formControlName="nombreUsuario" required>
+      <div *ngIf="form.controls['nombreUsuario'].invalid && (form.controls['nombreUsuario'].dirty || form.controls['nombreUsuario'].touched)" class="invalid-feedback">
+        <div  *ngIf="form.controls['nombreUsuario'].errors['required']" >El nombre es obligatorio.</div>
+      </div>
       </div>
 
       <div class="mb-3 password-container">
         <label for="password" class="form-label fw-bold">Contraseña</label>
-        <input [type]="show_button ? 'text' : 'password'"  [(ngModel)]="password" required class="form-control w-100" id="password" name="password"><i [class]="show_eye ? 'fa fa-eye' : 'fa fa-eye-slash'" (click)="showPassword()"> </i>
+        <input type="text" class="form-control" [ngClass]="{'is-invalid': form.controls['password'].invalid && (form.controls['password'].dirty || form.controls['password'].touched)}" id="password" name="password" formControlName="password" [type]="show_button ? 'text' : 'password'" required><i [class]="show_eye ? 'fa fa-eye' : 'fa fa-eye-slash'" (click)="showPassword()"> </i>
+        <div *ngIf="form.controls['password'].invalid && (form.controls['password'].dirty || form.controls['password'].touched)" class="invalid-feedback">
+          <div  *ngIf="form.controls['password'].errors['required']" >La contraseña es obligatoria.</div>
+        </div>
+        <div *ngIf="isLogginFail" class="text-danger">
+          Nombre de Usuario o contraseña incorrecto.
+        </div>
+        <!-- <input [type]="show_button ? 'text' : 'password'"  [(ngModel)]="password" required class="form-control w-100" id="password" name="password"><i [class]="show_eye ? 'fa fa-eye' : 'fa fa-eye-slash'" (click)="showPassword()"> </i> -->
 
         <!-- <div *ngIf="Password?.errors && Password?.touched">
           <p *ngIf="Password?.hasError('required')" class="text-danger">
@@ -31,7 +32,7 @@
         </div> -->
       </div>
 
-      <button type="submit" class="btn btn-secondary ingresar-sesion-boton w-100">Ingresar</button>
+      <button type="submit" class="btn btn-secondary ingresar-sesion-boton w-100" [disabled]="isSubmitting" ><span *ngIf="isSubmitting" class="spinner-border spinner-border-sm" role="status"></span>  {{ buttonText }}</button>
     </fieldset>
   </form>
 </div>

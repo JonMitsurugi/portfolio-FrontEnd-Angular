@@ -1,69 +1,38 @@
-<section class="row my-5">
-  <h2 id="estudios" class="text-center fs-2 fw-bold">Estudios</h2>
-  <p class="col-lg-8 offset-lg-2 text-center lead w-lg-50">Esta es la instrucción pertinente de la que dispongo para recorrer el camino de la programación y el diseño web.</p>
-  <div class="container px-4 " id="featured-3">
-    <div>
-      <ul class="row g-4 row-cols-1 row-cols-md-2 row-cols-xxl-3 estudios">
-        <li *ngFor="let estudio of estudioList" class="col">
-          <div class="imagen-estudio">
-            <img [src]="estudio.urlImgEst" alt="" class="">
+<section class="my-5">
+  <div class="col-md-10">
+    <h2 id="estudios" class="titulo">Estudios</h2>
+    <p class="info w-lg-50">Esta es la instrucción pertinente de la que dispongo para recorrer el camino de la programación y el diseño web.</p>
+  </div>
+
+  <div class="container-grid" id="featured-3">
+    <div *ngFor="let estudio of estudioList" class="item-lista d-flex flex-column">
+      <div class="ms-2 imagen-estudio">
+        <img [src]="estudio.urlImgEst" alt="" class="">
+      </div>
+
+      <div class="ms-2 g-5">
+        <h3 class="titulo-item">{{estudio.nombreEst}}</h3>
+        <div class="dropdown" *ngIf="isLogged" >
+          <button class="btn btn-light btn-edicion btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-ellipsis"></i></button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" data-bs-toggle="modal" (click)="editModal(estudio)"><i class="fa-solid fa-pen me-2"></i>Editar</a>
+            <a class="dropdown-item opcion-borrar" (click)="borrar(estudio.id)"><i class="fa-solid fa-trash-can me-2"></i>Borrar</a>
           </div>
-        <div class="d-flex justify-content-start ">
-          <h3 class="me-2 fs-3">{{estudio.nombreEst}}</h3>
-          <div class="dropdown" *ngIf="isLogged" >
-            <button class="btn btn-light btn-opciones btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-ellipsis"></i></button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item"  data-bs-toggle="modal"  (click)="editModal(estudio)"><i class="fa-solid fa-pen me-2"></i>Editar</a>
-              <a class="dropdown-item borrar" (click)="borrar(estudio.id)"><i class="fa-solid fa-trash-can me-2"></i>Borrar</a>
+        </div>
+      </div>
+
+      <p class="lugar-estudio ms-2 mb-1">{{estudio.lugarEst}}</p>
+      <div ngPreserveWhitespaces class="ms-2"><time>{{estudio.fechaInicioEst}}</time> - <time>{{estudio.fechaFinEst ? estudio.fechaFinEst : ''}}</time></div>
+      <div class="descripcion-item ms-2 mb-1">{{estudio.descripcionEst}}</div>
+        </div>
+
+        <a class="" href="" type="button" (click)="newModal()" *ngIf="isLogged" data-bs-toggle="modal">
+          <div class="d-flex container-añadir-item justify-content-center col align-items-center">
+            <div class="btn-añadir-item align-items-center d-flex gap-2">
+              <i class="fa-regular align-bottom justify-content-end fa-plus"></i><span class="d-inline-block">Añadir Estudio</span>
             </div>
           </div>
-        </div>
-          <small class="periodo-estudio lead">{{estudio.lugarEst}}</small>
-          <small ngPreserveWhitespaces class="periodo-estudio"><time>{{estudio.fechaInicioEst}}</time> - <time>{{estudio.fechaFinEst ? estudio.fechaFinEst : ''}}</time></small>
-          <p>{{estudio.descripcionEst}}</p>
-        </li>
+        </a>
 
-        <a class="agregar-item-link" href="" type="button" (click)="newModal()" *ngIf="isLogged" data-bs-toggle="modal">
-        <li class="ms-0 ms-md-0 mt-3 col agregar-proyecto d-flex justify-content-start align-items-center mt-1">
-          <i class="ms-3  fa-regular align-bottom justify-content-end fa-plus"></i><span class="agregar">Agregar item</span>
-        </li>
-      </a>
-
-      </ul>
-
-      <!-- <div class="col">
-        <div class="imagen-estudio">
-          <img src="assets/img/Estudios/Logo_de_la_Universidad_de_Buenos_Aires.jpg" alt="" class="">
-        </div>
-
-        <h3 class="fs-3">Diseño gráfico</h3>
-        <small class="periodo-estudio lead">FADU</small>
-        <small ngPreserveWhitespaces class="periodo-estudio"><time>2003</time> - <time></time></small>
-        <p>Carrera de grado que consiste en proyectar comunicaciones visuales destinadas a transmitir mensajes específicos a grupos sociales con objetivos determinados. El rol que cumple el diseñador gráfico en el proceso de comunicación es el de codificador o intérprete del mensaje. Trabaja en la interpretación, ordenamiento y presentación de los mensajes visuales.</p>
-      </div>
-
-      <div class="col">
-        <div class="imagen-estudio">
-          <img src="assets/img/Estudios/Logo-frecodecamp.png" alt="" class="">
-        </div>
-        <h3 class="fs-3">JavaScript Algorithms and Data Structures</h3>
-        <small class="periodo-estudio lead">FreeCodeCamp</small>
-        <small class="periodo-estudio">2019</small>
-        <p>Curso en donde se enseñan fundamentos de Javascript: variables, arrays, objetos, loops y funciones.
-        También se estudia la manipulación de strings, expresiones regulares, asi como los paradigmas de programación OOP y FP.
-        </p>
-      </div>
-
-      <div class="col">
-        <div class="imagen-estudio">
-          <img src="assets/img/Estudios/Capacitarte-logo-blanco-en-fondo-blanco-mediano-700x399(2).png" alt="" class="">
-        </div>
-
-        <h3 class="fs-3">Curso de Python</h3>
-        <small class="periodo-estudio lead">Capacitarte</small>
-        <small class="periodo-estudio">2020</small>
-        <p>Curso en el que se tratan las caracteristicas y virtudes de este lenguaje multiplataforma y su sintaxis. Se vieron los tipos de datos propios de Python, el funcionamiento de loops y condicionales, recursividad, modulos, etc.</p>
-      </div>  -->
-    </div>
   </div>
 </section>

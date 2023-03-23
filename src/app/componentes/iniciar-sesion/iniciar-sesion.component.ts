@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginUsuario } from 'src/app/models/login-usuario';
-import { AutenticacionService } from 'src/app/services/autenticacion.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { TokenService } from 'src/app/services/token.service';
 
@@ -13,6 +12,11 @@ import { TokenService } from 'src/app/services/token.service';
   styleUrls: ['./iniciar-sesion.component.css']
 })
 export class IniciarSesionComponent implements OnInit {
+
+  isSubmitting = false;
+  buttonText = 'Ingresar';
+  form: FormGroup;
+
   isLogged = false;
   isLogginFail = false;
   loginUsuario! : LoginUsuario;
@@ -21,29 +25,20 @@ export class IniciarSesionComponent implements OnInit {
   roles: string[] = [];
   errMsj!: string;
 
-  // form!: FormGroup;
 
-  constructor(private tokenService: TokenService,  private authService: AuthService, private router: Router) {
-  //constructor(private formBuilder: FormBuilder, private autenticacionService: AutenticacionService, private ruta: Router ) {
-    // this.form = this.formBuilder.group(
-    //   {
-    //     email: ['', [Validators.required, Validators.email]],
-    //     password: ['', [Validators.required, Validators.minLength(8)]],
-    //     deviceInfo: this.formBuilder.group(
-    //       {
-    //         deviceId: ["17867868768"],
-    //         deviceType: ["DEVICE_TYPE_ANDROID"],
-    //         notificationToken: ["67657575eececc34"]
-    //       }
-    //     )
-    //   }
-    // )
+
+  constructor(private tokenService: TokenService,  private authService: AuthService, private router: Router, private formBuilder: FormBuilder) {
 
   }
 
 
 
   ngOnInit(): void {
+    this.form = this.formBuilder.group({
+        nombreUsuario: ['', [Validators.required]],
+        password: ['', [Validators.required]],
+    })
+
     if (this.tokenService.getToken()) {
       this.isLogged = true;
       this.isLogginFail = false;
@@ -52,8 +47,20 @@ export class IniciarSesionComponent implements OnInit {
   }
 
   onLogin(): void {
-    this.loginUsuario = new LoginUsuario(this.nombreUsuario, this.password)
+    if (!this.form.valid) {
+      event.preventDefault();
+      event.stopPropagation();
+      this.form.markAllAsTouched();
+      return;
+    }
+
+    this.isSubmitting = true;
+    this.buttonText = ' Enviando...';
+
+    this.loginUsuario = this.form.value;
     this.authService.login(this.loginUsuario).subscribe(data => {
+      this.isSubmitting = false;
+      this.buttonText = 'Enviar';
       this.isLogged = true;
       this.isLogginFail = false;
       this.tokenService.setToken(data.token);
@@ -62,10 +69,13 @@ export class IniciarSesionComponent implements OnInit {
       this.roles = data.authorities;
       this.router.navigate([''])
     }, err => {
-        this.isLogged = false;
-        this.isLogginFail = true;
-        this.errMsj = err.error.mensaje;
-        console.log(this.errMsj);
+      this.isSubmitting = false;
+      this.buttonText = 'Enviar';
+      this.isLogged = false;
+      this.isLogginFail = true;
+      this.errMsj = err.error.mensaje;
+      console.log(this.loginUsuario);
+      console.log(this.errMsj);
 
       })
   }
