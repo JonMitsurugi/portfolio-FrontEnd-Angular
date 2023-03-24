@@ -1,11 +1,16 @@
-<div class="container">
-  <footer class="py-3 my-4">
-    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Acerca de</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Estudios</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Habilidades</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Proyectos</a></li>
-    </ul>
-    <p class="text-center text-muted">© 2022</p>
-  </footer>
-</div>
+<section class="container my-5" id="">
+    <div class="footer-container row pt-2">
+
+        <footer class="col-7 justify-content-start d-flex ps-0">
+            <p class="fecha-footer pt-3 text-muted">JONATAN AMADO @ {{anioActual}}</p>
+          </footer>
+
+
+        <div class="col-5 justify-content-end d-flex pe-0">
+
+          <button (click)="scrollToTop()" class="btn-subir btn btn-sm">
+            <i class="flecha-arriba fa-solid fa-arrow-up-long d-inline-block"></i>
+          </button>
+        </div>
+    </div>
+</section>

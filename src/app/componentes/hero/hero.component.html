@@ -1,5 +1,5 @@
 
-<section class="hero" [style.background-image] = "'url(' + persona.imgFondo + ')'">
+<section class="container-fluid hero" [style.background-image] = "'url(' + persona.imgFondo + ')'">
   <div class="row d-flex align-items-center ">
     <div class="my-4 d-flex justify-content-center">
       <div class=" foto-cara mb-3" [style.background-image] = "'url(' + persona.imgPerfil + ')'"><button *ngIf="isLogged" class="btn btn-light btn-edicion btn-perfil" type="button" (click)="editModal(persona)"><i class="fa-solid fa-pen fa-lg"></i></button></div>

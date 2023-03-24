@@ -1,13 +1,14 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgbModalRef, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Habilidad } from 'src/app/models/habilidad';
 import { HabilidadService } from 'src/app/services/habilidad.service';
-import { PorfolioService } from 'src/app/services/porfolio.service';
+import { CdkDrag, CdkDragDrop, CdkDragMove, CdkDropList, CdkDropListGroup, moveItemInArray } from '@angular/cdk/drag-drop';
 import { TokenService } from 'src/app/services/token.service';
 import { UtilsService } from 'src/app/services/utils.service';
 import { NewHabilidadComponent } from './new-habilidad.component';
 import { EditHabilidadComponent } from './edit-habilidad.component';
+import { ViewportRuler } from '@angular/cdk/scrolling';
 
 @Component({
   selector: 'app-habilidades',
@@ -21,8 +22,7 @@ export class HabilidadesComponent implements OnInit {
   private modalRef: NgbModalRef;
   isLogged = false;
 
-  constructor(public utils: UtilsService, private modalService: NgbModal, public habilidadService: HabilidadService, private tokenService: TokenService) { }
-
+  constructor(public utils: UtilsService, private modalService: NgbModal, public habilidadService: HabilidadService, private tokenService: TokenService) {}
 
   ngOnInit(): void {
     this.habilidadService.lista().subscribe(
@@ -84,4 +84,6 @@ export class HabilidadesComponent implements OnInit {
       });
   }
 
+
 }
+

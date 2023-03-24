@@ -25,7 +25,7 @@
 
     <div  class="mb-2">
       <label for="progresoHab" class="col-form-label fw-bold">Porcentaje de Progreso</label>
-      <input type="text" class="form-control" id="progresoHab" name="progresoHab" formControlName="progresoHab" [ngClass]="{'is-invalid': crudForm.controls['progresoHab'].invalid && (crudForm.controls['progresoHab'].dirty || crudForm.controls['progresoHab'].touched)}"  required>
+      <input type="number"  input type="number" maxlength= "3" ng-pattern="/^\d{4}$/" step="1" [max]="100" class="form-control" id="progresoHab" name="progresoHab" formControlName="progresoHab" [ngClass]="{'is-invalid': crudForm.controls['progresoHab'].invalid && (crudForm.controls['progresoHab'].dirty || crudForm.controls['progresoHab'].touched)}"  required>
       <div *ngIf="crudForm.controls['progresoHab'].invalid && (crudForm.controls['progresoHab'].dirty || crudForm.controls['progresoHab'].touched)" class="invalid-feedback">
         <div  *ngIf="crudForm.controls['progresoHab'].errors['required']" >El progreso es obligatorio.</div>
       </div>

@@ -23,14 +23,7 @@ body {
 
 }
 
-.hero {
-  height: 50vh;
-  background-size: cover;
-  background-repeat: no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+
 
 h1 {
   color: #fff;
@@ -73,9 +66,7 @@ li {
   pointer-events: auto;
 }
 
-.estudios-list > li {
-  /* display: inline; */
-}
+
 
 
 .navbar-toggler-icon {
@@ -250,8 +241,11 @@ ul {
 
 }
 .img-habilidad {
-  height: 5rem;
-  width: 5rem;
+  height: 5em;
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  border-radius: 5px;
 }
 .progress {
   border-radius: 4px;
@@ -392,7 +386,13 @@ time {
   transition: border .2s;
   min-height: 173px;
 }
+@media (min-width: 576px) {
+  .container-añadir-item {
+    min-height: 173px;
+    height: 100%;
 
+  }
+}
 @media (min-width: 992px) {
   .container-añadir-item {
     min-height: 173px;
@@ -427,12 +427,56 @@ time {
   position: relative;
 }
 
+/*HERO*/
+.hero {
+  height: 50vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
 /*NAVBAR*/
+.navbar {
+  background-color: #212529 !important;
+}
+.nav-link{
+  color: rgba(255, 255, 255, .75) !important;
+  transition: color .2s;
+}
+.nav-link:hover {
+  color: rgba(255, 255, 255, 1) !important;
+}
+
+ul a i{
+  color: rgba(255, 255, 255, .75) !important;
+  transition: color .2s;
+}
+
+ul a i:hover {
+  color: rgba(255, 255, 255, 1) !important;
+}
+
 .logo-argentina-programa {
   height: auto;
   width: 36px;
   display: inline-block;
   vertical-align: top;
+  opacity: .75;
+  transition: opacity .2s;
+}
+
+.logo-argentina-programa:hover {
+  opacity: 1;
+}
+
+.btn-login {
+  border-color: rgba(255, 255, 255, .75) ;
+  color: rgba(255, 255, 255, .75);
+  transition: all .2s;
 }
 /*ESTUDIOS*/
 .lugar-estudio {
@@ -441,12 +485,18 @@ time {
 }
 
 /*HABILIDAD*/
+@media (min-width: 576px) {
+  .habilidad-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
 @media (min-width: 992px) {
   .habilidad-grid {
     grid-template-rows: minmax(173px,100%);
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr) !important;
   }
 }
+
 /*EXPERIENCIA*/
 .rol-experiencia {
   font-size: 1.1em;
@@ -464,4 +514,35 @@ h3 a:hover {
 .tipo-proyecto {
   font-size: 1.2em;
   font-style: italic;
+}
+
+/*FOOTER*/
+.footer-container {
+  border-top: 2px solid rgb(165, 169, 170);
+  align-items: center;
+}
+
+.fecha-footer {
+  max-width: 100%;
+  display: inline-block;
+}
+
+.btn-subir {
+  border-radius: 5px;
+  padding: .2em ;
+  height: 2.5em;
+  width: 2.5em;
+  font-size: 1.2em;
+  color: #666969;
+}
+
+.btn-subir:hover {
+  color: #116979;
+  background-color: rgba(208,230,233,1); ;
+}
+.btn-subir:active {
+  color: #116979 ;
+  background-color: rgb(154, 204, 211) !important;
+  border: none;
+
 }
