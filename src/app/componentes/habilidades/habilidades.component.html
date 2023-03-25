@@ -1,15 +1,15 @@
 <section class="my-5 " id="">
   <div class="col-md-10">
-    <h2 id="" class="titulo">Habilidades</h2>
+    <h2 id="habilidades" class="titulo">Habilidades</h2>
     <p class="info w-lg-50">Cuento con algunas caracteristicas que me permiten desempeñarme bien dentro de cualquier entorno de trabajo y poder desarrollar actividades en grupo de forma satisfactoria.</p>
   </div>
 
-  <div class="container-grid habilidad-grid">
+  <div class="container-grid habilidad-grid" >
     <div *ngFor="let habilidad of habilidadList" class="item-lista d-flex flex-column">
-      <div class="d-flex d-lg-inline-block gap-2 gap-lg-0">
+      <div class="d-lg-inline-block gap-2 gap-lg-0">
 
-        <div class="img-habilidad ms-lg-2 ms-0 my-1">
-            <img [src]="habilidad.urlImgHab" class="card-img-top" alt="..." >
+        <div class="my-1 mb-3">
+            <img [src]="habilidad.urlImgHab" class="img-habilidad" alt="..." >
         </div>
         <div>
           <div class="ms-2 g-5">

@@ -12,9 +12,6 @@ import { environment } from 'src/environments/environment';
 export class AuthService {
   baseUrl = environment.baseUrl + 'auth/';
 
-  //authUrl = 'https://porfolio-jonmitsurugi.koyeb.app/auth/';
-  // authUrl = 'http://localhost:8080/auth/';
-
   constructor(private httpClient: HttpClient) { }
 
   public nuevo(nuevoUsuario: NuevoUsuario): Observable<any> {
