@@ -1,5 +1,5 @@
 <div class="modal-dialog m-0 rounded-0" role="document">
-  <div class="modal-content border-0 rounded-0 p-3 mb-0">
+  <div class="modal-content border-0 rounded-2 p-3 mb-0">
 
 <div class="modal-header border-0 rounded-0 ">
   <h4 class="modal-title">Añadir Estudio</h4>
@@ -33,23 +33,19 @@
         <label for="fechaInicioEst" class="col-form-label fw-bold">Fecha de inicio</label>
         <input type="number" maxlength= "4" ng-pattern="/^\d{4}$/" step="1" class="form-control row-col-6" id="fechaInicioEst" name="fechaInicioEst" formControlName="fechaInicioEst" [ngClass]="{'is-invalid': crudForm.controls['fechaInicioEst'].invalid && (crudForm.controls['fechaInicioEst'].dirty || crudForm.controls['fechaInicioEst'].touched)}" required>
         <div *ngIf="crudForm.controls['fechaInicioEst'].invalid && (crudForm.controls['fechaInicioEst'].dirty || crudForm.controls['fechaInicioEst'].touched)" class="invalid-feedback">
-          <!-- <div  *ngIf="crudForm.get('fechaInicioEst').errors['between']">La fecha es entre.</div> -->
           <div  *ngIf="crudForm.get('fechaInicioEst').errors['required']">La fecha es obligatoria.</div>
-           <!-- <div *ngIf="crudForm.hasError('fechaFinalInvalida')  && (crudForm.get('fechaFinEst').dirty || crudForm.get('fechaFinEst').touched) ">
-            La fecha final debe ser igual o mayor que la fecha de inicio.
-          </div> -->
         </div>
       </div>
 
       <div class="mb-2 col-6">
-        <label for="fechaFinEst" class="col-form-label fw-bold">Fecha de finalización</label>
+        <label for="fechaFinEst" class="col-form-label fw-bold">Año de término</label>
         <input type="number" maxlength= "4"  ng-pattern="/\d/" step="1" class="form-control row-col-6" id="fechaFinEst" name="fechaFinEst" formControlName="fechaFinEst">
       </div>
     </div>
 
     <div class="mb-2">
       <label for="descripcionEst" class="col-form-label fw-bold">Descripción</label>
-      <input type="text" class="form-control" id="descripcionEst" name="descripcionEst" formControlName="descripcionEst" [ngClass]="{'is-invalid': crudForm.controls['descripcionEst'].invalid && (crudForm.controls['descripcionEst'].dirty || crudForm.controls['descripcionEst'].touched)}"  required>
+      <textarea type="text" class="form-control" id="descripcionEst" name="descripcionEst" formControlName="descripcionEst" [ngClass]="{'is-invalid': crudForm.controls['descripcionEst'].invalid && (crudForm.controls['descripcionEst'].dirty || crudForm.controls['descripcionEst'].touched)}"  required></textarea>
       <div *ngIf="crudForm.controls['descripcionEst'].invalid && (crudForm.controls['descripcionEst'].dirty || crudForm.controls['descripcionEst'].touched)" class="invalid-feedback">
         <div  *ngIf="crudForm.controls['descripcionEst'].errors['required']" >La descripcion es obligatoria.</div>
       </div>

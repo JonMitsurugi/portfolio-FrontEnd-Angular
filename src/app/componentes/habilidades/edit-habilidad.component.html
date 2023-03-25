@@ -1,5 +1,5 @@
 <div class="modal-dialog m-0 rounded-0" role="document">
-  <div class="modal-content border-0 rounded-0 p-3 mb-0">
+  <div class="modal-content border-0 rounded-2 p-3 mb-0">
 
 <div class="modal-header border-0 rounded-0 ">
   <h4 class="modal-title">Editar Habilidad</h4>
@@ -8,7 +8,7 @@
 <div class="modal-body pt-0">
   <form [formGroup]="crudForm" (ngSubmit)="onUpdate()" novalidate #f="ngForm" class="">
     <div  class="mb-2">
-      <label for="nombreHab" class="col-form-label fw-bold">Nombre del habilidad </label>
+      <label for="nombreHab" class="col-form-label fw-bold">Nombre de habilidad </label>
       <input type="text" class="form-control" [ngClass]="{'is-invalid': crudForm.controls['nombreHab'].invalid && (crudForm.controls['nombreHab'].dirty || crudForm.controls['nombreHab'].touched)}" id="nombreHab" name="nombreHab" formControlName="nombreHab" required>
       <div *ngIf="crudForm.controls['nombreHab'].invalid && (crudForm.controls['nombreHab'].dirty || crudForm.controls['nombreHab'].touched)" class="invalid-feedback">
         <div  *ngIf="crudForm.controls['nombreHab'].errors['required']" >El nombre es obligatorio.</div>
@@ -33,7 +33,7 @@
 
     <div class="mb-2">
       <label for="descripcionHab" class="col-form-label fw-bold">Descripción</label>
-      <input type="text" class="form-control" id="descripcionHab" name="descripcionHab" formControlName="descripcionHab" [ngClass]="{'is-invalid': crudForm.controls['descripcionHab'].invalid && (crudForm.controls['descripcionHab'].dirty || crudForm.controls['descripcionHab'].touched)}"  required>
+      <textarea type="text" class="form-control" id="descripcionHab" name="descripcionHab" formControlName="descripcionHab" [ngClass]="{'is-invalid': crudForm.controls['descripcionHab'].invalid && (crudForm.controls['descripcionHab'].dirty || crudForm.controls['descripcionHab'].touched)}"  required></textarea>
       <div *ngIf="crudForm.controls['descripcionHab'].invalid && (crudForm.controls['descripcionHab'].dirty || crudForm.controls['descripcionHab'].touched)" class="invalid-feedback">
         <div  *ngIf="crudForm.controls['descripcionHab'].errors['required']" >La descripcion es obligatoria.</div>
       </div>

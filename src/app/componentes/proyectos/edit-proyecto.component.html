@@ -1,5 +1,5 @@
 <div class="modal-dialog m-0 rounded-0" role="document" data-bs-config={backdrop:true}>
-  <div class="modal-content border-0 rounded-0 p-3 mb-0">
+  <div class="modal-content border-0 rounded-2 p-3 mb-0">
 
 <div class="modal-header border-0 rounded-0 ">
   <h4 class="modal-title">Actualizar Proyecto</h4>
@@ -30,7 +30,7 @@
 
     <div class="mb-2">
       <label for="descripcionPro" class="col-form-label fw-bold">Descripción</label>
-      <input type="text" class="form-control" id="descripcionPro" name="descripcionPro" formControlName="descripcionPro" [ngClass]="{'is-invalid': crudForm.controls['descripcionPro'].invalid && (crudForm.controls['descripcionPro'].dirty || crudForm.controls['descripcionPro'].touched)}"  required>
+      <textarea type="text" class="form-control" id="descripcionPro" name="descripcionPro" formControlName="descripcionPro" [ngClass]="{'is-invalid': crudForm.controls['descripcionPro'].invalid && (crudForm.controls['descripcionPro'].dirty || crudForm.controls['descripcionPro'].touched)}"  required></textarea>
       <div *ngIf="crudForm.controls['descripcionPro'].invalid && (crudForm.controls['descripcionPro'].dirty || crudForm.controls['descripcionPro'].touched)" class="invalid-feedback">
         <div  *ngIf="crudForm.controls['descripcionPro'].errors['required']" >La descripcion es obligatoria.</div>
       </div>
