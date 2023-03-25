@@ -1,14 +1,17 @@
 
 <section class="container-fluid hero" [style.background-image] = "'url(' + persona.imgFondo + ')'">
-  <div class="row d-flex align-items-center ">
-    <div class="my-4 d-flex justify-content-center">
-      <div class=" foto-cara mb-3" [style.background-image] = "'url(' + persona.imgPerfil + ')'"><button *ngIf="isLogged" class="btn btn-light btn-edicion btn-perfil" type="button" (click)="editModal(persona)"><i class="fa-solid fa-pen fa-lg"></i></button></div>
+  <div class="d-flex align-items-center flex-column flex-md-row gap-md-4 ">
+    <div class=" d-flex justify-content-center">
+      <div class="mb-md-5 foto-cara mb-3" [style.background-image] = "'url(' + persona.imgPerfil + ')'"><button *ngIf="isLogged" class="btn btn-light btn-edicion btn-perfil" type="button" (click)="editModal(persona)"><i class="fa-solid fa-pen fa-lg"></i></button></div>
 
     </div>
-    <h1 ngPreserveWhitespaces class="fw-bold text-center fs-1"><span id="nombre">{{persona.nombre}}</span> <span id="apellido">{{persona.apellido}}</span></h1>
-    <h2 ngPreserveWhitespaces class=" text-center text-white"><span id="nombre">{{persona.descripcion}}</span> </h2>
-    <p class=" fw-bold text-center lead w-lg-50 text-white fs-3" id=""></p>
-    <p class=" text-center lead w-lg-50 text-white fs-5" id=""></p>
+    <div class="d-md-flex flex-md-column align-items-md-start mb-5">
+      <h1 ngPreserveWhitespaces class="fw-bold text-center fs-1 "><span id="nombre" class="nombre-persona display-2 fw-bold">{{persona.nombre}}</span> <span id="apellido" class="display-2  fw-bold">{{persona.apellido}}</span></h1>
+      <h2 ngPreserveWhitespaces class=" text-center text-white mb-0"><span id="nombre" class=" display-5">{{persona.descripcion | uppercase}}</span> </h2>
+      <p class=" fw-bold text-center lead w-lg-50 text-white fs-3" id=""></p>
+      <p class=" text-center lead w-lg-50 text-white fs-5" id=""></p>
+
+    </div>
 
 
   </div>

@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { Estudio } from 'src/app/models/estudio';
 import { EstudioService } from 'src/app/services/estudio.service';
-import { PorfolioService } from 'src/app/services/porfolio.service';
 import { TokenService } from 'src/app/services/token.service';
 import { UtilsService } from 'src/app/services/utils.service';
 import { NewEstudioComponent } from './new-estudio.component';

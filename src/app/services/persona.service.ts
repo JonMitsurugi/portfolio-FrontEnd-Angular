@@ -9,10 +9,7 @@ import { environment } from 'src/environments/environment';
 })
 export class PersonaService {
 
-
   baseUrl = environment.baseUrl + 'personas/';
-  // baseUrl = 'https://porfolio-jonmitsurugi.koyeb.app/personas/';
-  //baseUrl = 'http://localhost:8080/personas/';
 
   constructor(private httpClient: HttpClient ) {}
 

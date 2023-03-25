@@ -10,8 +10,6 @@ import { environment } from 'src/environments/environment';
 export class HabilidadService {
 
   baseUrl = environment.baseUrl + 'habilidad/';
-  // baseUrl = 'https://porfolio-jonmitsurugi.koyeb.app/habilidad/'
-  // baseUrl = 'http://localhost:8080/habilidad/'
 
   constructor(private httpClient: HttpClient) { }
 

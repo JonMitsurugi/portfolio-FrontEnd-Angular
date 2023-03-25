@@ -11,9 +11,6 @@ export class EstudioService {
 
   baseUrl = environment.baseUrl + 'estudio/';
 
-  //baseUrl = 'https://porfolio-jonmitsurugi.koyeb.app/estudio/'
-  // baseUrl = 'http://localhost:8080/estudio/'
-
   constructor(private httpClient: HttpClient) { }
 
   public lista(): Observable<Estudio[]> {

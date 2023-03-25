@@ -10,8 +10,6 @@ import { environment } from 'src/environments/environment';
 export class ProyectoService {
 
   baseUrl = environment.baseUrl + 'proyecto/';
-  // baseUrl = 'https://porfolio-jonmitsurugi.koyeb.app/proyecto/'
-  //baseUrl = 'http://localhost:8080/proyecto/'
 
   constructor(private httpClient: HttpClient) { }
 

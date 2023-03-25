@@ -427,15 +427,7 @@ time {
   position: relative;
 }
 
-/*HERO*/
-.hero {
-  height: 50vh;
-  background-size: cover;
-  background-repeat: no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+
 
 
 
@@ -478,6 +470,22 @@ ul a i:hover {
   color: rgba(255, 255, 255, .75);
   transition: all .2s;
 }
+
+/*HERO*/
+.hero {
+  height: 50vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.nombre-persona {
+  /* font-family: 'Merriweather', sans-serif; */
+}
+
 /*ESTUDIOS*/
 .lugar-estudio {
   font-size: 1.4em;

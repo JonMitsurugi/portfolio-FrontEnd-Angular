@@ -10,8 +10,6 @@ import { environment } from 'src/environments/environment';
 export class ExperienciaService {
 
   baseUrl = environment.baseUrl + 'experiencia/';
-  // baseUrl = 'https://porfolio-jonmitsurugi.koyeb.app/experiencia/'
-  // baseUrl = 'http://localhost:8080/experiencia/'
 
   constructor(private httpClient: HttpClient) { }
 
